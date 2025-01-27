@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const ShoeFilter = ({ onFilterChange }) => {
-  const [selectedSize, setSelectedSize] = useState('');
+  const [selectedSize, setSelectedSize] = useState(''); 
   const [selectedPrice, setSelectedPrice] = useState('');
 
   const handleSizeChange = (e) => {
