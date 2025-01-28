@@ -21,6 +21,8 @@ import Tshirts from './Components/clothingcomponent/men/t-shirts.jsx'
 import Fashionmen from './Components/clothingcomponent/men/fashion-accessories-men.jsx'
 import Fashionwomen from './Components/clothingcomponent/women/fashion-accessories-women.jsx'
 import Kurti from './Components/clothingcomponent/women/kurti.jsx' 
+{/* forgot password */}
+import Forgotpassword from './Components/forgotpassword.jsx'
 
 
 
@@ -52,6 +54,9 @@ const router = createBrowserRouter(
 <Route path='/womenafashion' element={<Fashionwomen/>}/>
 <Route path='/kurti' element={<Kurti/>}/>
 
+{/* forgot password */}
+
+<Route path='/forgotpassword' element={<Forgotpassword/>}/>
 
 
 

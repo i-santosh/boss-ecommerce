@@ -5,7 +5,7 @@ const Footer = () => {
 
   <footer>
 
-    <div class="footer-category">
+    {/* <div class="footer-category">
 
       <div class="container">
 
@@ -79,7 +79,7 @@ const Footer = () => {
 
       </div>
 
-    </div>
+    </div> */}
 
     <div class="footer-nav">
 

@@ -9,6 +9,37 @@ const ShoeFilter = ({ onFilterChange }) => {
     onFilterChange({ size: e.target.value, price: selectedPrice });
   };
 
+
+
+
+
+
+//productdetail-card
+const ProductDetail = ({ product, onClose }) => {
+  return (
+    <div className="p-8 border rounded shadow-lg bg-white">
+      <h1 className="text-2xl font-bold mb-4">{product.name}</h1>
+      <p className="text-lg mb-6">Price: {product.price}</p>
+      <div className="flex gap-4">
+        <button className="bg-blue-500 text-white px-4 py-2 rounded">Buy Now</button>
+        <button className="bg-green-500 text-white px-4 py-2 rounded">Add to Cart</button>
+      </div>
+      <button className="mt-4 text-red-500" onClick={onClose}>Close</button>
+    </div>
+  );
+};
+
+
+
+
+
+
+
+
+
+
+
+
   const handlePriceChange = (e) => {
     setSelectedPrice(e.target.value);
     onFilterChange({ size: selectedSize, price: e.target.value });
