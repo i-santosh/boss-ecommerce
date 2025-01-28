@@ -42,7 +42,7 @@ const LoginForm = () => {
 
 const loginsuccess=()=>{
 
-navigate('/account')
+navigate('/myaccount')
 
 
 

@@ -5,7 +5,6 @@ import LAYOUT from './Components/LAYOUT.jsx'
 import Women from './Components/women.jsx'
 import Admin from './Components/admin.jsx'
 import About from './Components/about.jsx'
-import Myaccount from './Components/myaccount.jsx'
 import Cart from './Components/cart.jsx'
 import Home from './Components/home.jsx'
 import Contact from './Components/contact.jsx'
@@ -24,9 +23,13 @@ import Kurti from './Components/clothingcomponent/women/kurti.jsx'
 {/* forgot password */}
 import Forgotpassword from './Components/forgotpassword.jsx'
 
+//Layout2 import
+import LAYOUT2 from './Components/LAYOUT2.jsx'
 
-
-
+import MyOrders from './Components/Address/myorders.jsx';
+import Savedupi from './Components/Address/savedupi.jsx';
+import Address from './Components/Address/address.jsx';
+import ProfileInfo from './Components/Address/profile.jsx'
 
 
 
@@ -40,7 +43,16 @@ const router = createBrowserRouter(
 <Route path='/women' element={<Women/>}/>
 <Route path='/offers' element={<Hotdeals/>}/>
 <Route path='/about' element={<About/>}/>
-<Route path='/account' element={<Myaccount/>}/>
+
+
+<Route path='/myaccount' element={<LAYOUT2/>}> 
+
+<Route path="myorders" element={<MyOrders/>} />
+<Route index element={<ProfileInfo/>} />
+<Route path="savedupi" element={<Savedupi/>} />
+<Route path="address" element={<Address/>} />
+
+</Route>
 <Route path='/admin' element={<Admin/>}/>
 <Route path='/cart' element={<Cart/>}/>
 <Route path='/contact' element={<Contact/>}/>
@@ -60,30 +72,22 @@ const router = createBrowserRouter(
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </Route>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -130,6 +134,6 @@ const router = createBrowserRouter(
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-<RouterProvider router={router}/>
+<RouterProvider router={router} />
   </StrictMode>
 )
