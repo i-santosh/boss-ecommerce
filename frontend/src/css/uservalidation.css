@@ -1,0 +1,14 @@
+.button-login{
+
+border: 1px solid salmon;
+border-radius: 10px;
+
+}
+
+.button-login:hover{
+
+    background-color: salmon;
+    color: white;
+}
+
+

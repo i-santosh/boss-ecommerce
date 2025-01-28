@@ -141,7 +141,7 @@ const Hotdeals = () => {
 
         <h2 class="videoheading">Men's latest fashion sale</h2>
 
-        <p class="banner-text">
+        <p class="banner-text" className="text-white text-1xl">
           starting at &#8377; <b>2000</b>.00
         </p>
 
@@ -177,8 +177,8 @@ const Hotdeals = () => {
 
         <h2 class="banner-title">New fashion summer sale</h2>
 
-        <p class="banner-text">
-          starting at &dollar; <b>29</b>.99
+        <p class="banner-text" className="text-white text-1xl">
+          starting at &#8377;<b>29</b>.99
         </p>
 
         <a href="#" class="banner-btn">Shop now</a>
@@ -241,7 +241,7 @@ const Hotdeals = () => {
 
       {/* Shoes Grid */}
       <div className="flex-grow p-4">
-        <h2 className="text-2xl font-bold mb-4" class="heading-grid">Top Deals</h2>
+        <h2 className="text-2xl font-bold mb-4" class="heading-grid">Best Offers !!</h2>
         <ShoeGrid shoes={filteredShoes} />
         <ShoeGrid shoes={filteredShoes} />
       </div>

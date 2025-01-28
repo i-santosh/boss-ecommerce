@@ -10,8 +10,9 @@ import Home from './Components/home.jsx'
 import Contact from './Components/contact.jsx'
 import Wishlist from './Components/wishlist.jsx'
 import Men from './Components/men.jsx'
-import Uservalidation from './Components/uservalidation.jsx'
 import Hotdeals from './Components/hotdeals.jsx'
+import Signin from './Components/signin.jsx'// signin page
+import Signupform from './Components/signup.jsx'
 
 //men section for clothing
 import Formals from './Components/clothingcomponent/men/formals.jsx'
@@ -22,6 +23,10 @@ import Fashionwomen from './Components/clothingcomponent/women/fashion-accessori
 import Kurti from './Components/clothingcomponent/women/kurti.jsx' 
 {/* forgot password */}
 import Forgotpassword from './Components/forgotpassword.jsx'
+//terms
+
+import Terms from './Components/privacy&policy/terms.jsx'
+import PrivacyPolicy from './Components/privacy&policy/privacy&policy.jsx'
 
 //Layout2 import
 import LAYOUT2 from './Components/LAYOUT2.jsx'
@@ -58,7 +63,8 @@ const router = createBrowserRouter(
 <Route path='/contact' element={<Contact/>}/>
 <Route path='/wish' element={<Wishlist/>}/>
 <Route path='/men' element={<Men/>}/>
-<Route path='/signin' element={<Uservalidation/>}/>
+<Route path='/signin' element={<Signin/>}/>
+<Route path='/signup' element={<Signupform/>}/>
 <Route path='/menformal' element={<Formals/>}/>
 <Route path='/menshorts' element={<Shorts/>}/>
 <Route path='/mentshirts' element={<Tshirts/>}/>
@@ -69,6 +75,13 @@ const router = createBrowserRouter(
 {/* forgot password */}
 
 <Route path='/forgotpassword' element={<Forgotpassword/>}/>
+
+
+{/* terms */}
+<Route path='/terms' element={<Terms/>}/>
+<Route path='/privacy&policy' element={<PrivacyPolicy/>}/>
+
+
 
 
 

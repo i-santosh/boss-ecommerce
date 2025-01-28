@@ -1,0 +1,51 @@
+
+  /* Container for the Terms and Conditions page */
+  .terms-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Title */
+  .terms h1 {
+    font-size: 36px;
+    color: #ff6f61; /* Salmon Pink */
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Section headers */
+  .terms h2 {
+    font-size: 28px;
+    color: #ff6f61; /* Salmon Pink */
+    margin-top: 30px;
+    padding-bottom: 5px;
+    margin-left: 30px;
+  }
+  
+  /* Paragraphs and content */
+ .terms p {
+    font-size: 13px;
+    line-height: 1;
+    color: #555;
+    margin-bottom: 15px;
+    margin-left: 15px;
+    
+  }
+  
+  /* Lists for conditions and features */
+  .terms ul {
+    margin-left: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .terms li {
+    font-size: 13px;
+    line-height: 1;
+    color: #555;
+    margin-bottom: 10px;
+  }
+  

@@ -1,0 +1,5 @@
+#contact-field::-webkit-inner-spin-button,
+#contact-field::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
