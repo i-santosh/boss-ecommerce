@@ -58,7 +58,7 @@ const router = createBrowserRouter(
 <Route path='/contact' element={<Contact/>}/>
 <Route path='/wish' element={<Wishlist/>}/>
 <Route path='/men' element={<Men/>}/>
-<Route path='/user' element={<Uservalidation/>}/>
+<Route path='/signin' element={<Uservalidation/>}/>
 <Route path='/menformal' element={<Formals/>}/>
 <Route path='/menshorts' element={<Shorts/>}/>
 <Route path='/mentshirts' element={<Tshirts/>}/>
