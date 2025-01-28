@@ -61,7 +61,9 @@ class SignUpView(CoreAPIView):
     throttle_classes = [AuthRateThrottle]
 
     def post(self, request, *args, **kwargs):
-        serializer = SignUpSerializer(data=request.data)
+        data = request.data
+        data['username'] = data.get('email')
+        serializer = SignUpSerializer(data=data)
 
         try:
 

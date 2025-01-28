@@ -5,14 +5,16 @@ from django.contrib.auth.models import AbstractUser
 
 class CUser(AbstractUser):
     uid = models.AutoField(primary_key=True)
-    username = models.CharField(max_length=50, unique=True, db_index=True)
-    name = models.CharField(max_length=255)
+    username = models.CharField(max_length=255, unique=True)
+    full_name = models.CharField(max_length=255)
     email = models.EmailField(unique=True, max_length=150, db_index=True)
     email_verified = models.BooleanField(default=False)
+    contact_number = models.IntegerField(default=0)
     country = models.CharField(max_length=100, default="")
 
     def __str__(self):
         return self.username
+
 
 
 class PasswordReset(models.Model):
