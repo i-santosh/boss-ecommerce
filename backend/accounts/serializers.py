@@ -49,7 +49,7 @@ class SignUpSerializer(serializers.ModelSerializer):
 
 
 class SignInSerializer(serializers.Serializer):
-    username = serializers.CharField()
+    email = serializers.CharField()
     password = serializers.CharField(write_only=True)
 
 

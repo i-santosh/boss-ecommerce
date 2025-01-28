@@ -132,19 +132,18 @@ class SignInView(CoreAPIView):
         serializer = SignInSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 
-        username_or_email = serializer.validated_data["username"]
+        username = serializer.validated_data["email"]
         password = serializer.validated_data["password"]
 
-        user = CUser.objects.filter(username=username_or_email).first()
-        if not user:
-            try:
-                user = CUser.objects.get(email=username_or_email)
-            except CUser.DoesNotExist:
-                raise CoreAPIException(
-                    error_code=EC.RES_NOT_FOUND,
-                    message="We couldn't find account with this user!",
-                    extra_context={"action": "Please check credentials and try again!"}
-                )
+        user = CUser.objects.filter(username=username).first()
+        try:
+            user = CUser.objects.get(email=username)
+        except CUser.DoesNotExist:
+            raise CoreAPIException(
+                error_code=EC.RES_NOT_FOUND,
+                message="We couldn't find account with this user!",
+                extra_context={"action": "Please check credentials and try again!"}
+            )
         authenticated_user = authenticate(
             request,
             username=user.username,
