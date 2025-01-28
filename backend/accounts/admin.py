@@ -4,7 +4,7 @@ from .models import CUser, PasswordReset, ConfirmEmail
 
 @admin.register(CUser)
 class CUserAdmin(admin.ModelAdmin):
-    list_display = ["username", "name"]
+    list_display = ["full_name", "email"]
 
 
 @admin.register(PasswordReset)

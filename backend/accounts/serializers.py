@@ -9,7 +9,7 @@ from .models import CUser, PasswordReset, ConfirmEmail
 class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = CUser
-        fields = ["username", "name", "email", "email_verified"]
+        fields = ["full_name", "email", "email_verified"]
         read_only_fields = ['email_verified']
 
     def validate_username(self, value):
@@ -31,7 +31,7 @@ class UserProfileSerializer(serializers.ModelSerializer):
 class SignUpSerializer(serializers.ModelSerializer):
     class Meta:
         model = CUser
-        fields = ["name", "email", "username", "password", "country"]
+        fields = ["full_name", "email", "username", "password", "country"]
         extra_kwargs = {
             'country': {'required': True,'allow_blank': False}
         }
