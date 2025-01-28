@@ -42,9 +42,25 @@ const LoginForm = () => {
 
 const loginsuccess=()=>{
 
-navigate('/account')
+navigate('/myaccount')
+
+
+
+
 
 }
+
+const forgotpassword=()=>{
+
+
+  navigate('/forgotpassword')
+}
+
+
+
+
+
+
   return (
     <div>
       <h2 className="text-3xl font-semibold text-gray-800 mb-4">Login</h2>
@@ -81,8 +97,9 @@ navigate('/account')
           <button
             type="button"
             className="text-hsl(353, 100%, 78%) font-medium hover:underline"
+            onClick={()=>{forgotpassword()}}
           >
-            Request OTP
+            Forgot Password?
           </button>
         </div>
       </form>
@@ -129,6 +146,7 @@ const SignupForm = () => {
             required
           />
         </div>
+
         <div>
           <label htmlFor="confirm-password" className="block text-sm font-medium text-gray-600">Confirm Password</label>
           <input
@@ -140,6 +158,62 @@ const SignupForm = () => {
             required
           />
         </div>
+                {/* 
+                
+                phone number field
+                
+                */}
+
+<div>
+          <label htmlFor="confirm-password" className="block text-sm font-medium text-gray-600">Contact</label>
+          <input
+            type="number"
+            id="confirm-password"
+            name="confirm-password"
+            className="w-full px-4 py-2 mt-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-hsl(353, 100%, 78%)"
+            placeholder="Enter your contact number"
+            required
+          />
+        </div>
+
+
+
+                 {/* 
+                
+                country field
+                
+                */}
+
+<div>
+          <label htmlFor="confirm-password" className="block text-sm font-medium text-gray-600">Country</label>
+          <select name="" id=""
+          
+          className="w-full px-4 py-2 mt-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-hsl(353, 100%, 78%)"
+            placeholder="Enter your contact number"
+            required
+          
+          
+          
+          
+          
+          >
+            <option value="">INDIA</option>
+            <option value="">US</option>
+            <option value="">UK</option>
+            <option value="">AUS</option>
+            <option value="">ENG</option>
+            <option value="">CAN</option>
+          </select>
+        </div>
+
+
+
+                 {/* 
+                
+                country field end
+                
+                */}
+
         <button
           type="submit"
           className="bg-hsl(353, 100%, 78%) text-white px-4 py-2 rounded-lg hover:bg-hsl(353, 100%, 68%) mt-4"

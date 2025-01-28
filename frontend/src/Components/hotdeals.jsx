@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const ShoeFilter = ({ onFilterChange }) => {
-  const [selectedSize, setSelectedSize] = useState('');
+  const [selectedSize, setSelectedSize] = useState(''); 
   const [selectedPrice, setSelectedPrice] = useState('');
 
   const handleSizeChange = (e) => {
@@ -123,6 +123,118 @@ const Hotdeals = () => {
   };
 
   return (
+    <>
+{/* slider for hot deals start here */}
+
+<div class="banner">
+
+<div class="container">
+
+  <div class="slider-container has-scrollbar">
+
+    <div class="slider-item">
+      <img src=".\assets\background\hotdeals-1.jpg" alt="hot deals" />
+
+      <div class="banner-content">
+
+        <p class="banner-subtitle">Trending item</p>
+
+        <h2 class="videoheading">Men's latest fashion sale</h2>
+
+        <p class="banner-text">
+          starting at &#8377; <b>2000</b>.00
+        </p>
+
+        <a href="#" class="banner-btn">Shop now</a>
+
+      </div>
+
+    </div>
+
+    <div class="slider-item">
+
+      <img src=".assets\background\sale.png" alt="hot deals" />
+
+      <div class="banner-content">
+
+        <p class="banner-subtitle">Trending accessories</p>
+
+
+
+        <a href="#" class="banner-btn">Shop now</a>
+
+      </div>
+
+    </div>
+
+    <div class="slider-item">
+
+      <img src=".assets\background\sale2.jpg" alt="new fashion summer sale" />
+
+      <div class="banner-content">
+
+        <p class="banner-subtitle">Sale Offer</p>
+
+        <h2 class="banner-title">New fashion summer sale</h2>
+
+        <p class="banner-text">
+          starting at &dollar; <b>29</b>.99
+        </p>
+
+        <a href="#" class="banner-btn">Shop now</a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <div className="flex">
       {/* Filter Section */}
       <ShoeFilter onFilterChange={handleFilterChange} />
@@ -134,6 +246,7 @@ const Hotdeals = () => {
         <ShoeGrid shoes={filteredShoes} />
       </div>
     </div>
+    </>
   );
 };
 

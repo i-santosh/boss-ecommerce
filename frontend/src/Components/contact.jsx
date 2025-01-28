@@ -1,66 +1,99 @@
-import React, { useState } from 'react';
+import React from "react";
+import "../css/contact.css"
 
-import '../css/contact.css'
-/**
- * MyAccount component that allows users to view and update their account information.
- */
+
 const Contact = () => {
-  const [userInfo, setUserInfo] = useState({
-    name: 'rohan',
-    email: 'john.doe@example.com',
-    address: '123 Main St, Anytown, USA',
-  });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setUserInfo({ ...userInfo, [name]: value });
-  };
+return (
+  <>
+    <div className="min-h-screen bg-white flex items-center justify-center">
+      <div className="flex flex-col lg:flex-row w-full max-w-5xl bg-white shadow-xl rounded-2xl">
+        {/* Left Image Section */}
+        <div className="w-full lg:w-1/2  ">
+          <img class="contact-img" src="assets\background\contact-page2.png" alt="Placeholder" className=" object-cover rounded-2xl " />
+        </div>
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Here you would typically send the updated userInfo to the server
-    console.log('Updated User Info:', userInfo);
-    alert('Your information has been updated!');
-  };
-
-  return (
-    <div className="my-account">
-      <h2>Account Information</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label>Name:</label>
+        {/* right form section */}
+        <div className="contact-form">
+      <h2 className="text-3xl font-semibold text-gray-800 mb-4">Feel free to contact!!</h2>
+      <form className="space-y-4">
+        <div>
+          <label htmlFor="name" className="block text-sm font-medium text-gray-600">Full Name</label>
           <input
             type="text"
+            id="name"
             name="name"
-            value={userInfo.name}
-            onChange={handleChange}
+            className="w-full px-4 py-2 mt-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-hsl(353, 100%, 78%)"
+            placeholder="Enter your full name"
             required
           />
         </div>
-        <div className="form-group">
-          <label>Email:</label>
+        <div>
+          <label htmlFor="email" className="block text-sm font-medium text-gray-600">Email Address</label>
           <input
             type="email"
+            id="email"
             name="email"
-            value={userInfo.email}
-            onChange={handleChange}
+            className="w-full px-4 py-2 mt-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-hsl(353, 100%, 78%)"
+            placeholder="Enter your email"
             required
           />
         </div>
-        <div className="form-group">
-          <label>Address:</label>
+        <div>
+          <label htmlFor="Number" className="block text-sm font-medium text-gray-600">Contact</label>
+         
           <input
-            type="text"
-            name="address"
-            value={userInfo.address}
-            onChange={handleChange}
+            type="number"
+            id="contact"
+            name="contact number"
+            className="w-full px-4 py-2 mt-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-hsl(353, 100%, 78%) "
+            placeholder="contact number"
             required
           />
+
         </div>
-        <button className='btn-account' type="submit">Update Information</button>
+        <div>
+          <label htmlFor="confirm-password" className="block text-sm font-medium text-gray-600">Descripiton</label>
+          {/* <input
+            type='text'
+            id="confirm-password"
+            name=" describe your query"
+            className="w-full px-4 py-2 mt-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-hsl(353, 100%, 78%)"
+            placeholder="describe your query"
+            required
+          /> */}
+          <textarea name="" id="text-description"
+          type= 'text' 
+          rows={3}
+          columns={50}
+          maxLength={1000}
+          placeholder="describe your query" required
+          wrap="hard"
+          className="w-full px-4 py-2 mt-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-hsl(353, 100%, 78%)"
+          
+          
+          ></textarea>
+        </div>
+        <button
+          type="submit"
+          class="sumbit-button"
+          onClick={()=>alert("Your query has been submitted")}
+        >
+        Submit
+        </button>
       </form>
     </div>
+    
+    </div>
+    </div>
+
+
+    </>
   );
 };
+
+
+
+
 
 export default Contact;
