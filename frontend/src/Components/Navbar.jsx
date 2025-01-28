@@ -11,7 +11,7 @@ const Navbar = ()=>{
 
   const useraccount = ()=>{
 
-    navigation('/user')
+    navigation('/signin')
     
     }
 

@@ -133,7 +133,7 @@ const Hotdeals = () => {
   <div class="slider-container has-scrollbar">
 
     <div class="slider-item">
-      <img src=".\assets\background\hotdeals-1.jpg" alt="hot deals" />
+      <img src="./assets/background/hotdeals-1.jpg" alt="hot deals" />
 
       <div class="banner-content">
 
@@ -153,7 +153,7 @@ const Hotdeals = () => {
 
     <div class="slider-item">
 
-      <img src=".assets\background\sale.png" alt="hot deals" />
+      <img src="./assets/background/sale.png" alt="hot deals" />
 
       <div class="banner-content">
 
@@ -169,7 +169,7 @@ const Hotdeals = () => {
 
     <div class="slider-item">
 
-      <img src=".assets\background\sale2.jpg" alt="new fashion summer sale" />
+      <img src="./assets/background/sale2.jpg" alt="new fashion summer sale" />
 
       <div class="banner-content">
 

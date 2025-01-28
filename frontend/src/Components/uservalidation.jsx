@@ -60,10 +60,9 @@ const forgotpassword=()=>{
 
 
 
-
   return (
     <div>
-      <h2 className="text-3xl font-semibold text-gray-800 mb-4">Login</h2>
+      <h2 className="text-3xl font-semibold text-gray-800 mb-4 "  >Login</h2>
       <form className="space-y-4">
         <div>
           <label htmlFor="email" className="block text-sm font-medium text-gray-600">Email Address</label>
@@ -90,7 +89,7 @@ const forgotpassword=()=>{
         <div className="flex justify-between items-center mt-4">
           <button
             type="submit"
-            className="bg-hsl(353, 100%, 78%) text-black px-4 py-2 rounded-lg hover:bg-hsl(353, 100%, 68%)"
+            className="bg-hsl(353, 100%, 78%) text-black px-4 py-2 rounded-lg "
           onClick={()=>{loginsuccess()}}>
             Log In
           </button>
