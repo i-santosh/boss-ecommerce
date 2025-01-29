@@ -37,6 +37,11 @@ import Address from './Components/Address/address.jsx';
 import ProfileInfo from './Components/Address/profile.jsx'
 
 
+//admin 
+
+ import AdminPage from './Components/admin.jsx'
+
+
 
 
 const router = createBrowserRouter(
@@ -80,6 +85,9 @@ const router = createBrowserRouter(
 {/* terms */}
 <Route path='/terms' element={<Terms/>}/>
 <Route path='/privacy&policy' element={<PrivacyPolicy/>}/>
+
+{/* ADMIN PAGE */}
+<Route path='/adminpage' element={<AdminPage/>}/>
 
 
 
