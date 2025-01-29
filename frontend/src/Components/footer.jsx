@@ -1,4 +1,8 @@
 import React from 'react';
+import '../css/footer.css';
+import { Link } from 'react-router-dom';
+
+
 const Footer = () => {
   return (
     
@@ -209,8 +213,9 @@ const Footer = () => {
             </div>
 
             <address class="content">
-              419 State 414 Rte
-              Beaver Dams, New York(NY), 14812, USA
+
+              
+              144527 Garhshankar, Hoshiarpur road, Punjab, India
             </address>
           </li>
 
@@ -219,7 +224,7 @@ const Footer = () => {
               <ion-icon name="call-outline"></ion-icon>
             </div>
 
-            <a href="tel:+607936-8058" class="footer-nav-link">(607) 936-8058</a>
+            <a href="tel:+607936-8058" class="footer-nav-link">91+ 9876543213</a>
           </li>
 
           <li class="footer-nav-item flex">
@@ -283,6 +288,16 @@ const Footer = () => {
         <p class="copyright">
           Copyright &copy; <a href="#">Boss</a> all rights reserved 2025.
         </p>
+
+        <ul class="footer-policy-text">
+          
+        <Link to="/terms"><li>Terms</li></Link> 
+        <Link to="/privacy&policy"><li>Privacy & Policy</li></Link> 
+        <Link><li>Support</li></Link>
+        
+        
+        
+        </ul>
 
       </div>
 

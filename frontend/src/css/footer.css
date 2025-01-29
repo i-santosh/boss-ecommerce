@@ -1,0 +1,11 @@
+.footer-policy-text {
+
+    display:flex;
+    color:gray;
+    margin: auto;
+
+}
+
+.footer-policy-text li{
+    margin-right: 45px;
+}

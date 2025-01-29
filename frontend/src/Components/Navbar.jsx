@@ -439,6 +439,10 @@ navigation('/cart')
           <Link to="/offers" class="menu-title">Hot Offers</Link>
         </li>
 
+        <li class="menu-category">
+          <Link to="/adminpage" class="menu-title">Admin</Link>
+        </li>
+
       </ul>
 
     </div>
