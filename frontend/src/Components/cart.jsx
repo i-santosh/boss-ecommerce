@@ -1,7 +1,16 @@
 import React, { useState } from "react";
 import '../css/cart.css'
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
+
+const navigate = useNavigate();
+
+  const tohome = () => {
+
+navigate('/')
+
+  }
 
 
 

@@ -125,6 +125,7 @@ const Men = () => {
     { id: 6, name: "New Balance 990", price: 180, size: 10, category: "Running", img: "./assets/images/products/sports-6.jpg" },
     { id: 7, name: "Nike Air Force 1", price: 110, size: 11, category: "Sneakers", img: "./assets/images/products/sports-3.jpg" },
     { id: 8, name: "Adidas Stan Smith", price: 85, size: 8, category: "Casual", img: "./assets/images/products/sports-2.jpg" },
+    { id: 9, name: "Nike Air Force 1", price: 110, size: 11, category: "Sneakers", img: "./assets/images/products/sports-3.jpg" },
   ]);
 
   const handleFilterChange = (filters) => {
@@ -137,6 +138,7 @@ const Men = () => {
       { id: 6, name: "New Balance 990", price: 180, size: 10, category: "Running", img: "./assets/images/products/sports-6.jpg" },
       { id: 7, name: "Nike Air Force 1", price: 110, size: 11, category: "Sneakers", img: "./assets/images/products/sports-3.jpg" },
       { id: 8, name: "Adidas Stan Smith", price: 85, size: 8, category: "Casual", img: "./assets/images/products/sports-2.jpg" },
+      { id: 9, name: "Nike Air Force 1", price: 110, size: 11, category: "Sneakers", img: "./assets/images/products/sports-3.jpg" },
     ];
 
     // Apply Size Filter

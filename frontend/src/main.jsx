@@ -41,6 +41,9 @@ import ProfileInfo from './Components/Address/profile.jsx'
 
 import AdminPage from './Components/admin.jsx'
 
+//Error page if user enters wrong url
+import Error from './Components/error.jsx'
+
 
 
 
@@ -88,6 +91,8 @@ const router = createBrowserRouter(
 
       {/* ADMIN PAGE */}
       <Route path='/adminpage' element={<AdminPage />} />
+      <Route path='*' element={<Error />} />
+
 
 
 
