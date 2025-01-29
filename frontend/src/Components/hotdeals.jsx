@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const ShoeFilter = ({ onFilterChange }) => {
-  const [selectedSize, setSelectedSize] = useState(''); 
+  const [selectedSize, setSelectedSize] = useState('');
   const [selectedPrice, setSelectedPrice] = useState('');
 
   const handleSizeChange = (e) => {
@@ -57,7 +57,7 @@ const ShoeFilter = ({ onFilterChange }) => {
 const ShoeCard = ({ shoe }) => (
 
 
-    
+
   <div className="lg:w-1/4 md:w-1/2 p-4 w-fullhover:scale-200 transition-transform duration-300 ease-in-out transform hover:shadow-xl hover:bg-gray-50 rounded-lg">
     <div className="block relative h-48 rounded overflow-hidden">
       <img alt="ecommerce" className="object-cover object-center w-full h-full block" src={shoe.img} />
@@ -124,128 +124,86 @@ const Hotdeals = () => {
 
   return (
     <>
-{/* slider for hot deals start here */}
+      {/* slider for hot deals start here */}
 
-<div class="banner">
+      <div class="banner">
 
-<div class="container">
+        <div class="container">
 
-  <div class="slider-container has-scrollbar">
+          <div class="slider-container has-scrollbar">
 
-    <div class="slider-item">
-      <img src="./assets/background/hotdeals-1.jpg" alt="hot deals" />
+            <div class="slider-item">
+              <img src="./assets/background/hotdeals-1.jpg" alt="hot deals" />
 
-      <div class="banner-content">
+              <div class="banner-content">
 
-        <p class="banner-subtitle">Trending item</p>
+                <p class="banner-subtitle">Trending item</p>
 
-        <h2 class="videoheading">Men's latest fashion sale</h2>
+                <h2 class="videoheading">Men's latest fashion sale</h2>
 
-        <p class="banner-text" className="text-white text-1xl">
-          starting at &#8377; <b>2000</b>.00
-        </p>
+                <p class="banner-text" className="text-white text-1xl">
+                  starting at &#8377; <b>2000</b>.00
+                </p>
 
-        <a href="#" class="banner-btn">Shop now</a>
+                <a href="#" class="banner-btn">Shop now</a>
+
+              </div>
+
+            </div>
+
+            <div class="slider-item">
+
+              <img src="./assets/background/sale.png" alt="hot deals" />
+
+              <div class="banner-content">
+
+                <p class="banner-subtitle">Trending accessories</p>
+
+
+
+                <a href="#" class="banner-btn">Shop now</a>
+
+              </div>
+
+            </div>
+
+            <div class="slider-item">
+
+              <img src="./assets/background/sale2.jpg" alt="new fashion summer sale" />
+
+              <div class="banner-content">
+
+                <p class="banner-subtitle">Sale Offer</p>
+
+                <h2 class="banner-title">New fashion summer sale</h2>
+
+                <p class="banner-text" className="text-white text-1xl">
+                  starting at &#8377;<b>29</b>.99
+                </p>
+
+                <a href="#" class="banner-btn">Shop now</a>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
 
       </div>
 
-    </div>
+<div className="flex">
+        {/* Filter Section */}
+        <ShoeFilter onFilterChange={handleFilterChange} />
 
-    <div class="slider-item">
-
-      <img src="./assets/background/sale.png" alt="hot deals" />
-
-      <div class="banner-content">
-
-        <p class="banner-subtitle">Trending accessories</p>
-
-
-
-        <a href="#" class="banner-btn">Shop now</a>
-
+        {/* Shoes Grid */}
+        <div className="flex-grow p-4">
+          <h2 className="text-2xl font-bold mb-4" class="heading-grid">Best Offers !!</h2>
+          <ShoeGrid shoes={filteredShoes} />
+          <ShoeGrid shoes={filteredShoes} />
+        </div>
       </div>
-
-    </div>
-
-    <div class="slider-item">
-
-      <img src="./assets/background/sale2.jpg" alt="new fashion summer sale" />
-
-      <div class="banner-content">
-
-        <p class="banner-subtitle">Sale Offer</p>
-
-        <h2 class="banner-title">New fashion summer sale</h2>
-
-        <p class="banner-text" className="text-white text-1xl">
-          starting at &#8377;<b>29</b>.99
-        </p>
-
-        <a href="#" class="banner-btn">Shop now</a>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</div>
-
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <div className="flex">
-      {/* Filter Section */}
-      <ShoeFilter onFilterChange={handleFilterChange} />
-
-      {/* Shoes Grid */}
-      <div className="flex-grow p-4">
-        <h2 className="text-2xl font-bold mb-4" class="heading-grid">Best Offers !!</h2>
-        <ShoeGrid shoes={filteredShoes} />
-        <ShoeGrid shoes={filteredShoes} />
-      </div>
-    </div>
     </>
   );
 };

@@ -57,7 +57,7 @@ const ShoeFilter = ({ onFilterChange }) => {
 const ShoeCard = ({ shoe }) => (
 
 
-    
+
   <div className="lg:w-1/4 md:w-1/2 p-4 w-fullhover:scale-200 transition-transform duration-300 ease-in-out transform hover:shadow-xl hover:bg-gray-50 rounded-lg">
     <div className="block relative h-48 rounded overflow-hidden">
       <img alt="ecommerce" className="object-cover object-center w-full h-full block" src={shoe.img} />

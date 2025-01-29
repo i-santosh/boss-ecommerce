@@ -14,20 +14,20 @@ const ShoeFilter = ({ onFilterChange }) => {
 
 
 
-//productdetail-card
-const ProductDetail = ({ product, onClose }) => {
-  return (
-    <div className="p-8 border rounded shadow-lg bg-white">
-      <h1 className="text-2xl font-bold mb-4">{product.name}</h1>
-      <p className="text-lg mb-6">Price: {product.price}</p>
-      <div className="flex gap-4">
-        <button className="bg-blue-500 text-white px-4 py-2 rounded">Buy Now</button>
-        <button className="bg-green-500 text-white px-4 py-2 rounded">Add to Cart</button>
+  //productdetail-card
+  const ProductDetail = ({ product, onClose }) => {
+    return (
+      <div className="p-8 border rounded shadow-lg bg-white">
+        <h1 className="text-2xl font-bold mb-4">{product.name}</h1>
+        <p className="text-lg mb-6">Price: {product.price}</p>
+        <div className="flex gap-4">
+          <button className="bg-blue-500 text-white px-4 py-2 rounded">Buy Now</button>
+          <button className="bg-green-500 text-white px-4 py-2 rounded">Add to Cart</button>
+        </div>
+        <button className="mt-4 text-red-500" onClick={onClose}>Close</button>
       </div>
-      <button className="mt-4 text-red-500" onClick={onClose}>Close</button>
-    </div>
-  );
-};
+    );
+  };
 
 
 
@@ -88,7 +88,7 @@ const ProductDetail = ({ product, onClose }) => {
 const ShoeCard = ({ shoe }) => (
 
 
-    
+
   <div className="lg:w-1/4 md:w-1/2 p-4 w-fullhover:scale-200 transition-transform duration-300 ease-in-out transform hover:shadow-xl hover:bg-gray-50 rounded-lg">
     <div className="block relative h-48 rounded overflow-hidden">
       <img alt="ecommerce" className="object-cover object-center w-full h-full block" src={shoe.img} />

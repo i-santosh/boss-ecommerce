@@ -5,12 +5,12 @@ import { useNavigate } from 'react-router-dom';
 const Signin = () => {
 
 
-const navigate = useNavigate();
-const tosignup= ()=>{
+  const navigate = useNavigate();
+  const tosignup = () => {
 
-navigate('/signup')
+    navigate('/signup')
 
-}
+  }
 
 
 
@@ -24,13 +24,13 @@ navigate('/signup')
 
         {/* Right Form Section */}
         <div className="w-full lg:w-1/2 p-6 lg:p-8">
-          <LoginForm /> 
+          <LoginForm />
           <div className="text-center mt-4">
             <button
               className="text-hsl(353, 100%, 78%) font-medium hover:underline"
-              onClick={()=>{tosignup()}}
+              onClick={() => { tosignup() }}
             >
-               "Don't have an account? Sign Up"
+              "Don't have an account? Sign Up"
             </button>
           </div>
         </div>
@@ -43,23 +43,23 @@ navigate('/signup')
 const LoginForm = () => {
 
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-const loginsuccess=()=>{
+  const loginsuccess = () => {
 
-navigate('/myaccount')
-
-
+    navigate('/myaccount')
 
 
 
-}
-
-const forgotpassword=()=>{
 
 
-  navigate('/forgotpassword')
-}
+  }
+
+  const forgotpassword = () => {
+
+
+    navigate('/forgotpassword')
+  }
 
 
 
@@ -91,8 +91,8 @@ const forgotpassword=()=>{
             required
           />
         </div>
-        
-        
+
+
         {/* login button */}
 
 
@@ -100,15 +100,15 @@ const forgotpassword=()=>{
         <div className="flex justify-between items-center mt-4">
           <button
             type="submit"
-            className=" text-black px-4 py-2 " 
+            className=" text-black px-4 py-2 "
             class="button-login"
-          onClick={()=>{loginsuccess()}}>
+            onClick={() => { loginsuccess() }}>
             Log In
           </button>
           <button
             type="button"
             className="text-hsl(353, 100%, 78%) font-medium hover:underline"
-            onClick={()=>{forgotpassword()}}
+            onClick={() => { forgotpassword() }}
           >
             Forgot Password?
           </button>
