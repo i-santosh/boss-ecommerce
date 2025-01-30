@@ -33,7 +33,7 @@ function LAYOUT2() {
                   {/* <Link className="hover:text-pink-300">Gift Cards</Link> */}
                   <Link to={'savedupi'} className="hover:text-pink-300">Saved UPI</Link>
                   <br /><br /><br />
-                  <Link to="/user" className="hover:text-pink-300"> <img src="assets\images\icons\logout-myaccount.svg" alt="logout-icon " class="logout-img" />Log out</Link>
+                  <Link to="/signin" className="hover:text-pink-300"> <img src="assets\images\icons\logout-myaccount.svg" alt="logout-icon " class="logout-img" />Log out</Link>
                 </ul>
               </ul>
             </nav>

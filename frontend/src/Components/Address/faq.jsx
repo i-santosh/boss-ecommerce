@@ -1,7 +1,16 @@
 import React from 'react';
 import { Card, CardContent, Button } from "../ui-card/card,button.jsx"
+import { useNavigate } from 'react-router-dom';
 
 function Faq(props) {
+
+
+const navigate = useNavigate();
+ const tocontact = () => {
+    navigate('/contact');
+ }
+
+
   return (
     <section className="bg-pink-50 p-6 mt-6 rounded-lg shadow">
       <Card>
@@ -22,7 +31,7 @@ function Faq(props) {
             </div>
           </div>
           <div className="mt-4 ">
-            <Button className="contactSupport-myaccount" onClick={() => alert('Contact Support')}>Contact Support</Button>
+            <Button className="contactSupport-myaccount" onClick={() => {tocontact()}}>Contact Support</Button>
           </div>
         </CardContent>
       </Card>

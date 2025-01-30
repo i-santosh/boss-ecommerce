@@ -29,6 +29,37 @@ export const Button = ({ children, onClick, className, ...props }) => {
   );
 };
 
+
+
+export const Dialog = ({ open, onOpenChange, children }) => {
+  return open ? (
+    <div className="fixed inset-0 flex items-center justify-center bg-gray bg-opacity-50">
+      <div className="bg-white p-6 rounded-lg w-96">{children}</div>
+      <button className="absolute top-4 right-4 text-black" onClick={() => onOpenChange(false)}>×</button>
+    </div>
+  ) : null;
+};
+
+export const DialogContent = ({ children }) => {
+  return <div className="p-4">{children}</div>;
+};
+
+export const DialogTitle = ({ children }) => {
+  return <h2 className="text-lg font-semibold text-salmon-600">{children}</h2>;
+};
+
+export const Input = ({ placeholder, value, onChange, className }) => {
+  return (
+    <input
+      type="text"
+      placeholder={placeholder}
+      value={value}
+      onChange={onChange}
+      className={`border p-2 rounded w-full ${className}`}
+    />
+  );
+};
+
 // Tailwind Configuration for Salmon Pink Theme
 // Add this to your Tailwind CSS configuration file
 // module.exports = {
