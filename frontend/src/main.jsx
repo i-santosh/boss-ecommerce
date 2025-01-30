@@ -20,8 +20,8 @@ import Shorts from './Components/clothingcomponent/men/short$jeans.jsx'
 import Tshirts from './Components/clothingcomponent/men/t-shirts.jsx'
 import Fashionmen from './Components/clothingcomponent/men/fashion-accessories-men.jsx'
 import Fashionwomen from './Components/clothingcomponent/women/fashion-accessories-women.jsx'
-import Kurti from './Components/clothingcomponent/women/kurti.jsx' 
-{/* forgot password */}
+import Kurti from './Components/clothingcomponent/women/kurti.jsx'
+{/* forgot password */ }
 import Forgotpassword from './Components/forgotpassword.jsx'
 //terms
 
@@ -39,65 +39,66 @@ import ProfileInfo from './Components/Address/profile.jsx'
 
 //admin 
 
- import AdminPage from './Components/admin.jsx'
+import AdminPage from './Components/admin.jsx'
+
+//Error page if user enters wrong url
+import Error from './Components/error.jsx'
 
 
 
 
 const router = createBrowserRouter(
 
-   createRoutesFromElements(
+  createRoutesFromElements(
 
-<Route path='' element={<LAYOUT/>}>
-<Route index element={<Home/>}/>
-<Route path='/women' element={<Women/>}/>
-<Route path='/offers' element={<Hotdeals/>}/>
-<Route path='/about' element={<About/>}/>
-
-
-<Route path='/myaccount' element={<LAYOUT2/>}> 
-
-<Route path="myorders" element={<MyOrders/>} />
-<Route index element={<ProfileInfo/>} />
-<Route path="savedupi" element={<Savedupi/>} />
-<Route path="address" element={<Address/>} />
-
-</Route>
-<Route path='/admin' element={<Admin/>}/>
-<Route path='/cart' element={<Cart/>}/>
-<Route path='/contact' element={<Contact/>}/>
-<Route path='/wish' element={<Wishlist/>}/>
-<Route path='/men' element={<Men/>}/>
-<Route path='/signin' element={<Signin/>}/>
-<Route path='/signup' element={<Signupform/>}/>
-<Route path='/menformal' element={<Formals/>}/>
-<Route path='/menshorts' element={<Shorts/>}/>
-<Route path='/mentshirts' element={<Tshirts/>}/>
-<Route path='/menfashion' element={<Fashionmen/>}/>
-<Route path='/womenafashion' element={<Fashionwomen/>}/>
-<Route path='/kurti' element={<Kurti/>}/>
-
-{/* forgot password */}
-
-<Route path='/forgotpassword' element={<Forgotpassword/>}/>
+    <Route path='' element={<LAYOUT />}>
+      <Route index element={<Home />} />
+      <Route path='/women' element={<Women />} />
+      <Route path='/offers' element={<Hotdeals />} />
+      <Route path='/about' element={<About />} />
 
 
-{/* terms */}
-<Route path='/terms' element={<Terms/>}/>
-<Route path='/privacy&policy' element={<PrivacyPolicy/>}/>
+      <Route path='/myaccount' element={<LAYOUT2 />}>
 
-{/* ADMIN PAGE */}
-<Route path='/adminpage' element={<AdminPage/>}/>
+        <Route path="myorders" element={<MyOrders />} />
+        <Route index element={<ProfileInfo />} />
+        <Route path="savedupi" element={<Savedupi />} />
+        <Route path="address" element={<Address />} />
+
+      </Route>
+      <Route path='/admin' element={<Admin />} />
+      <Route path='/cart' element={<Cart />} />
+      <Route path='/contact' element={<Contact />} />
+      <Route path='/wish' element={<Wishlist />} />
+      <Route path='/men' element={<Men />} />
+      <Route path='/signin' element={<Signin />} />
+      <Route path='/signup' element={<Signupform />} />
+      <Route path='/menformal' element={<Formals />} />
+      <Route path='/menshorts' element={<Shorts />} />
+      <Route path='/mentshirts' element={<Tshirts />} />
+      <Route path='/menfashion' element={<Fashionmen />} />
+      <Route path='/womenafashion' element={<Fashionwomen />} />
+      <Route path='/kurti' element={<Kurti />} />
+
+      {/* forgot password */}
+
+      <Route path='/forgotpassword' element={<Forgotpassword />} />
 
 
+      {/* terms */}
+      <Route path='/terms' element={<Terms />} />
+      <Route path='/privacy&policy' element={<PrivacyPolicy />} />
 
-
-
-</Route>
+      {/* ADMIN PAGE */}
+      <Route path='/adminpage' element={<AdminPage />} />
+      <Route path='*' element={<Error />} />
 
 
 
 
+
+
+    </Route>
 
 
 
@@ -120,7 +121,11 @@ const router = createBrowserRouter(
 
 
 
-   )
+
+
+
+
+  )
 
 
 
@@ -155,6 +160,6 @@ const router = createBrowserRouter(
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-<RouterProvider router={router} />
+    <RouterProvider router={router} />
   </StrictMode>
 )

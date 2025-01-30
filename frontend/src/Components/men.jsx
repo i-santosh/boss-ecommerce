@@ -14,20 +14,20 @@ const ShoeFilter = ({ onFilterChange }) => {
 
 
 
-//productdetail-card
-const ProductDetail = ({ product, onClose }) => {
-  return (
-    <div className="p-8 border rounded shadow-lg bg-white">
-      <h1 className="text-2xl font-bold mb-4">{product.name}</h1>
-      <p className="text-lg mb-6">Price: {product.price}</p>
-      <div className="flex gap-4">
-        <button className="bg-blue-500 text-white px-4 py-2 rounded">Buy Now</button>
-        <button className="bg-green-500 text-white px-4 py-2 rounded">Add to Cart</button>
+  //productdetail-card
+  const ProductDetail = ({ product, onClose }) => {
+    return (
+      <div className="p-8 border rounded shadow-lg bg-white">
+        <h1 className="text-2xl font-bold mb-4">{product.name}</h1>
+        <p className="text-lg mb-6">Price: {product.price}</p>
+        <div className="flex gap-4">
+          <button className="bg-blue-500 text-black px-4 py-2 rounded">Buy Now</button>
+          <button className="bg-green-500 text-black px-4 py-2 rounded">Add to Cart</button>
+        </div>
+        <button className="mt-4 text-red-500" onClick={onClose}>Close</button>
       </div>
-      <button className="mt-4 text-red-500" onClick={onClose}>Close</button>
-    </div>
-  );
-};
+    );
+  };
 
 
 
@@ -88,7 +88,7 @@ const ProductDetail = ({ product, onClose }) => {
 const ShoeCard = ({ shoe }) => (
 
 
-    
+
   <div className="lg:w-1/4 md:w-1/2 p-4 w-fullhover:scale-200 transition-transform duration-300 ease-in-out transform hover:shadow-xl hover:bg-gray-50 rounded-lg">
     <div className="block relative h-48 rounded overflow-hidden">
       <img alt="ecommerce" className="object-cover object-center w-full h-full block" src={shoe.img} />
@@ -117,26 +117,28 @@ const ShoeGrid = ({ shoes }) => (
 
 const Men = () => {
   const [filteredShoes, setFilteredShoes] = useState([
-    { id: 1, name: "Nike Air Max", price: 120, size: 9, category: "Sneakers", img: "https://dummyimage.com/420x260" },
-    { id: 2, name: "Adidas Ultra Boost", price: 150, size: 10, category: "Running", img: "https://dummyimage.com/421x261" },
-    { id: 3, name: "Puma Suede", price: 80, size: 8, category: "Casual", img: "https://dummyimage.com/422x262" },
-    { id: 4, name: "Reebok Classic", price: 90, size: 7, category: "Casual", img: "https://dummyimage.com/423x263" },
-    { id: 5, name: "Converse Chuck Taylor", price: 60, size: 9, category: "Sneakers", img: "https://dummyimage.com/424x264" },
-    { id: 6, name: "New Balance 990", price: 180, size: 10, category: "Running", img: "https://dummyimage.com/425x265" },
-    { id: 7, name: "Nike Air Force 1", price: 110, size: 11, category: "Sneakers", img: "https://dummyimage.com/427x267" },
-    { id: 8, name: "Adidas Stan Smith", price: 85, size: 8, category: "Casual", img: "https://dummyimage.com/428x268" },
+    { id: 1, name: "Nike Air Max", price: 120, size: 9, category: "Sneakers", img: "./assets/images/products/sports-1.jpg" },
+    { id: 2, name: "Adidas Ultra Boost", price: 150, size: 10, category: "Running", img: "./assets/images/products/sports-2.jpg" },
+    { id: 3, name: "Puma Suede", price: 80, size: 8, category: "Casual", img: "./assets/images/products/sports-3.jpg" },
+    { id: 4, name: "Reebok Classic", price: 90, size: 7, category: "Casual", img: "./assets/images/products/sports-4.jpg" },
+    { id: 5, name: "Converse Chuck Taylor", price: 60, size: 9, category: "Sneakers", img: "./assets/images/products/sports-5.jpg" },
+    { id: 6, name: "New Balance 990", price: 180, size: 10, category: "Running", img: "./assets/images/products/sports-6.jpg" },
+    { id: 7, name: "Nike Air Force 1", price: 110, size: 11, category: "Sneakers", img: "./assets/images/products/sports-3.jpg" },
+    { id: 8, name: "Adidas Stan Smith", price: 85, size: 8, category: "Casual", img: "./assets/images/products/sports-2.jpg" },
+   
   ]);
 
   const handleFilterChange = (filters) => {
     let filtered = [
-      { id: 1, name: "Nike Air Max", price: 120, size: 9, category: "Sneakers", img: "https://dummyimage.com/420x260" },
-      { id: 2, name: "Adidas Ultra Boost", price: 150, size: 10, category: "Running", img: "https://dummyimage.com/421x261" },
-      { id: 3, name: "Puma Suede", price: 80, size: 8, category: "Casual", img: "https://dummyimage.com/422x262" },
-      { id: 4, name: "Reebok Classic", price: 90, size: 7, category: "Casual", img: "https://dummyimage.com/423x263" },
-      { id: 5, name: "Converse Chuck Taylor", price: 60, size: 9, category: "Sneakers", img: "https://dummyimage.com/424x264" },
-      { id: 6, name: "New Balance 990", price: 180, size: 10, category: "Running", img: "https://dummyimage.com/425x265" },
-      { id: 7, name: "Nike Air Force 1", price: 110, size: 11, category: "Sneakers", img: "https://dummyimage.com/427x267" },
-      { id: 8, name: "Adidas Stan Smith", price: 85, size: 8, category: "Casual", img: "https://dummyimage.com/428x268" },
+      { id: 1, name: "Nike Air Max", price: 120, size: 9, category: "Sneakers", img: "./assets/images/products/sports-1.jpg" },
+      { id: 2, name: "Adidas Ultra Boost", price: 150, size: 10, category: "Running", img: "./assets/images/products/sports-2.jpg" },
+      { id: 3, name: "Puma Suede", price: 80, size: 8, category: "Casual", img: "./assets/images/products/sports-3.jpg" },
+      { id: 4, name: "Reebok Classic", price: 90, size: 7, category: "Casual", img: "./assets/images/products/sports-4.jpg" },
+      { id: 5, name: "Converse Chuck Taylor", price: 60, size: 9, category: "Sneakers", img: "./assets/images/products/sports-5.jpg" },
+      { id: 6, name: "New Balance 990", price: 180, size: 10, category: "Running", img: "./assets/images/products/sports-6.jpg" },
+      { id: 7, name: "Nike Air Force 1", price: 110, size: 11, category: "Sneakers", img: "./assets/images/products/sports-3.jpg" },
+      { id: 8, name: "Adidas Stan Smith", price: 85, size: 8, category: "Casual", img: "./assets/images/products/sports-2.jpg" },
+      
     ];
 
     // Apply Size Filter

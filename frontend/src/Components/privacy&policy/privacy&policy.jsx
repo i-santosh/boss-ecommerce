@@ -82,7 +82,7 @@ const PrivacyPolicy = () => {
         <li>Phone: [Insert phone number]</li>
         <li>Address: [Insert physical address]</li>
       </ul>
-      
+
       <footer>
         <p>Thank you for trusting [Your Website Name] with your personal information!</p>
       </footer>

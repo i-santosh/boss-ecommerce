@@ -5,11 +5,11 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    
 
-  <footer>
 
-    {/* <div class="footer-category">
+    <footer>
+
+      {/* <div class="footer-category">
 
       <div class="container">
 
@@ -85,225 +85,225 @@ const Footer = () => {
 
     </div> */}
 
-    <div class="footer-nav">
+      <div class="footer-nav">
 
-      <div class="container">
+        <div class="container">
 
-        <ul class="footer-nav-list">
+          <ul class="footer-nav-list">
 
-          <li class="footer-nav-item">
-            <h2 class="nav-title">Popular Categories</h2>
-          </li>
+            <li class="footer-nav-item">
+              <h2 class="nav-title">Popular Categories</h2>
+            </li>
 
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Fashion</a>
-          </li>
+            <li class="footer-nav-item">
+              <a href="#" class="footer-nav-link">Fashion</a>
+            </li>
 
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Electronic</a>
-          </li>
+            <li class="footer-nav-item">
+              <a href="#" class="footer-nav-link">Electronic</a>
+            </li>
 
-          <li class="footer-nav-item">   
-            <a href="#" class="footer-nav-link">Cosmetic</a>
-          </li>
+            <li class="footer-nav-item">
+              <a href="#" class="footer-nav-link">Cosmetic</a>
+            </li>
 
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Health</a>
-          </li>
+            <li class="footer-nav-item">
+              <a href="#" class="footer-nav-link">Health</a>
+            </li>
 
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Watches</a>
-          </li>
+            <li class="footer-nav-item">
+              <a href="#" class="footer-nav-link">Watches</a>
+            </li>
 
-        </ul>
+          </ul>
 
-        <ul class="footer-nav-list">
-        
-          <li class="footer-nav-item">
-            <h2 class="nav-title">Products</h2>
-          </li>
-        
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Prices drop</a>
-          </li>
-        
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">New products</a>
-          </li>
-        
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Best sales</a>
-          </li>
-        
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Contact us</a>
-          </li>
-        
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Sitemap</a>
-          </li>
-        
-        </ul>
+          <ul class="footer-nav-list">
 
-        <ul class="footer-nav-list">
-        
-          <li class="footer-nav-item">
-            <h2 class="nav-title">Our Company</h2>
-          </li>
-        
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Delivery</a>
-          </li>
-        
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Legal Notice</a>
-          </li>
-        
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Terms and conditions</a>
-          </li>
-        
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">About us</a>
-          </li>
-        
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Secure payment</a>
-          </li>
-        
-        </ul>
+            <li class="footer-nav-item">
+              <h2 class="nav-title">Products</h2>
+            </li>
 
-        <ul class="footer-nav-list">
-        
-          <li class="footer-nav-item">
-            <h2 class="nav-title">Services</h2>
-          </li>
-        
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Prices drop</a>
-          </li>
-        
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">New products</a>
-          </li>
-        
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Best sales</a>
-          </li>
-        
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Contact us</a>
-          </li>
-        
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Sitemap</a>
-          </li>
-        
-        </ul>
+            <li class="footer-nav-item">
+              <a href="#" class="footer-nav-link">Prices drop</a>
+            </li>
 
-        <ul class="footer-nav-list">
+            <li class="footer-nav-item">
+              <a href="#" class="footer-nav-link">New products</a>
+            </li>
 
-          <li class="footer-nav-item">
-            <h2 class="nav-title">Contact</h2>
-          </li>
+            <li class="footer-nav-item">
+              <a href="#" class="footer-nav-link">Best sales</a>
+            </li>
 
-          <li class="footer-nav-item flex">
-            <div class="icon-box">
-              <ion-icon name="location-outline"></ion-icon>
-            </div>
+            <li class="footer-nav-item">
+              <a href="#" class="footer-nav-link">Contact us</a>
+            </li>
 
-            <address class="content">
+            <li class="footer-nav-item">
+              <a href="#" class="footer-nav-link">Sitemap</a>
+            </li>
 
-              
-              144527 Garhshankar, Hoshiarpur road, Punjab, India
-            </address>
-          </li>
+          </ul>
 
-          <li class="footer-nav-item flex">
-            <div class="icon-box">
-              <ion-icon name="call-outline"></ion-icon>
-            </div>
+          <ul class="footer-nav-list">
 
-            <a href="tel:+607936-8058" class="footer-nav-link">91+ 9876543213</a>
-          </li>
+            <li class="footer-nav-item">
+              <h2 class="nav-title">Our Company</h2>
+            </li>
 
-          <li class="footer-nav-item flex">
-            <div class="icon-box">
-              <ion-icon name="mail-outline"></ion-icon>
-            </div>
+            <li class="footer-nav-item">
+              <a href="#" class="footer-nav-link">Delivery</a>
+            </li>
 
-            <a href="mailto:example@gmail.com" class="footer-nav-link">example@gmail.com</a>
-          </li>
+            <li class="footer-nav-item">
+              <a href="#" class="footer-nav-link">Legal Notice</a>
+            </li>
 
-        </ul>
+            <li class="footer-nav-item">
+              <a href="#" class="footer-nav-link">Terms and conditions</a>
+            </li>
 
-        <ul class="footer-nav-list">
+            <li class="footer-nav-item">
+              <a href="#" class="footer-nav-link">About us</a>
+            </li>
 
-          <li class="footer-nav-item">
-            <h2 class="nav-title">Follow Us</h2>
-          </li>
+            <li class="footer-nav-item">
+              <a href="#" class="footer-nav-link">Secure payment</a>
+            </li>
 
-          <li>
-            <ul class="social-link">
+          </ul>
 
-              <li class="footer-nav-item">
-                <a href="#" class="footer-nav-link">
-                  <ion-icon name="logo-facebook"></ion-icon>
-                </a>
-              </li>
+          <ul class="footer-nav-list">
 
-              <li class="footer-nav-item">
-                <a href="#" class="footer-nav-link">
-                  <ion-icon name="logo-twitter"></ion-icon>
-                </a>
-              </li>
+            <li class="footer-nav-item">
+              <h2 class="nav-title">Services</h2>
+            </li>
 
-              <li class="footer-nav-item">
-                <a href="#" class="footer-nav-link">
-                  <ion-icon name="logo-linkedin"></ion-icon>
-                </a>
-              </li>
+            <li class="footer-nav-item">
+              <a href="#" class="footer-nav-link">Prices drop</a>
+            </li>
 
-              <li class="footer-nav-item">
-                <a href="#" class="footer-nav-link">
-                  <ion-icon name="logo-instagram"></ion-icon>
-                </a>
-              </li>
+            <li class="footer-nav-item">
+              <a href="#" class="footer-nav-link">New products</a>
+            </li>
 
-            </ul>
-          </li>
+            <li class="footer-nav-item">
+              <a href="#" class="footer-nav-link">Best sales</a>
+            </li>
 
-        </ul>
+            <li class="footer-nav-item">
+              <a href="#" class="footer-nav-link">Contact us</a>
+            </li>
 
-      </div>
+            <li class="footer-nav-item">
+              <a href="#" class="footer-nav-link">Sitemap</a>
+            </li>
 
-    </div>
+          </ul>
 
-    <div class="footer-bottom">
+          <ul class="footer-nav-list">
 
-      <div class="container">
+            <li class="footer-nav-item">
+              <h2 class="nav-title">Contact</h2>
+            </li>
 
-        <img src="./assets/images/payment.png" alt="payment method" class="payment-img"/>
+            <li class="footer-nav-item flex">
+              <div class="icon-box">
+                <ion-icon name="location-outline"></ion-icon>
+              </div>
 
-        <p class="copyright">
-          Copyright &copy; <a href="#">Boss</a> all rights reserved 2025.
-        </p>
+              <address class="content">
 
-        <ul class="footer-policy-text">
-          
-        <Link to="/terms"><li>Terms</li></Link> 
-        <Link to="/privacy&policy"><li>Privacy & Policy</li></Link> 
-        <Link><li>Support</li></Link>
-        
-        
-        
-        </ul>
+
+                144527 Garhshankar, Hoshiarpur road, Punjab, India
+              </address>
+            </li>
+
+            <li class="footer-nav-item flex">
+              <div class="icon-box">
+                <ion-icon name="call-outline"></ion-icon>
+              </div>
+
+              <a href="tel:+607936-8058" class="footer-nav-link">91+ 9876543213</a>
+            </li>
+
+            <li class="footer-nav-item flex">
+              <div class="icon-box">
+                <ion-icon name="mail-outline"></ion-icon>
+              </div>
+
+              <a href="mailto:example@gmail.com" class="footer-nav-link">example@gmail.com</a>
+            </li>
+
+          </ul>
+
+          <ul class="footer-nav-list">
+
+            <li class="footer-nav-item">
+              <h2 class="nav-title">Follow Us</h2>
+            </li>
+
+            <li>
+              <ul class="social-link">
+
+                <li class="footer-nav-item">
+                  <a href="#" class="footer-nav-link">
+                    <ion-icon name="logo-facebook"></ion-icon>
+                  </a>
+                </li>
+
+                <li class="footer-nav-item">
+                  <a href="#" class="footer-nav-link">
+                    <ion-icon name="logo-twitter"></ion-icon>
+                  </a>
+                </li>
+
+                <li class="footer-nav-item">
+                  <a href="#" class="footer-nav-link">
+                    <ion-icon name="logo-linkedin"></ion-icon>
+                  </a>
+                </li>
+
+                <li class="footer-nav-item">
+                  <a href="#" class="footer-nav-link">
+                    <ion-icon name="logo-instagram"></ion-icon>
+                  </a>
+                </li>
+
+              </ul>
+            </li>
+
+          </ul>
+
+        </div>
 
       </div>
 
-    </div>
+      <div class="footer-bottom">
 
-  </footer>
+        <div class="container">
+
+          <img src="./assets/images/payment.png" alt="payment method" class="payment-img" />
+
+          <p class="copyright">
+            Copyright &copy; <a href="#">Boss</a> all rights reserved 2025.
+          </p>
+
+          <ul class="footer-policy-text">
+
+            <Link to="/terms"><li>Terms</li></Link>
+            <Link to="/privacy&policy"><li>Privacy & Policy</li></Link>
+            <Link><li>Support</li></Link>
+
+
+
+          </ul>
+
+        </div>
+
+      </div>
+
+    </footer>
   );
 };
 

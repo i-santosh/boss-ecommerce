@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, CardContent } from "../Components/Address/uicomponents.JSX";
-import { Button} from "../Components/Address/uicomponents.JSX";
+import { Button } from "../Components/Address/uicomponents.JSX";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../Components/Address/uicomponents.JSX";
 import { Plus } from "lucide-react";
 
