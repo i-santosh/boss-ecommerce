@@ -43,7 +43,11 @@ import AdminPage from './Components/admin.jsx'
 
 //Error page if user enters wrong url
 import Error from './Components/error.jsx'
+//signup redirect page
+import Signupredirect from './Components/signupredirectpage.jsx'
 
+//emailverified
+import Emailverified from './Components/emailverified.jsx'
 
 
 
@@ -93,6 +97,13 @@ const router = createBrowserRouter(
       <Route path='/adminpage' element={<AdminPage />} />
       <Route path='*' element={<Error />} />
 
+
+      {/* //signup redirect page */}
+      <Route path='/signupredirect' element={<Signupredirect />} />
+
+{/* email verified */}
+
+<Route path='/emailverified' element={<Emailverified />} />
 
 
 

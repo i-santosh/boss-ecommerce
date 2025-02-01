@@ -2,6 +2,7 @@ import React from "react";
 import '../css/uservalidation.css';
 import '../css/signup.css';
 import { useNavigate } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 
 
@@ -151,13 +152,14 @@ const Signup = () => {
                   country field end
                   
                   */}
-
+<Link to="/signupredirect">
         <button
           type="submit"
-          className="bg-hsl(353, 100%, 78%) text-white px-4 py-2 rounded-lg hover:bg-hsl(353, 100%, 68%) mt-4"
+          class="button-login"
         >
           Sign Up
         </button>
+        </Link>
       </form>
     </div>
   );
