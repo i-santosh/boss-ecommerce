@@ -10,5 +10,17 @@ border-radius: 10px;
     background-color: salmon;
     color: white;
 }
+.button-verified:hover{
+background-color: salmon;
+
+    color: white;
+    
+}
+.button-verified{
+   margin: auto;
+border: 1px solid salmon;
+
+    
+}
 
 
