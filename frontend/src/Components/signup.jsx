@@ -152,7 +152,7 @@ const Signup = () => {
                   country field end
                   
                   */}
-<Link to="/signupredirect">
+<Link to="/email/confirm/">
         <button
           type="submit"
           class="button-login"

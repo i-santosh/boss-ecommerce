@@ -8,38 +8,7 @@ const ShoeFilter = ({ onFilterChange }) => {
     setSelectedSize(e.target.value);
     onFilterChange({ size: e.target.value, price: selectedPrice });
   };
-
-
-
-
-
-
-  //productdetail-card
-  const ProductDetail = ({ product, onClose }) => {
-    return (
-      <div className="p-8 border rounded shadow-lg bg-white">
-        <h1 className="text-2xl font-bold mb-4">{product.name}</h1>
-        <p className="text-lg mb-6">Price: {product.price}</p>
-        <div className="flex gap-4">
-          <button className="bg-blue-500 text-black px-4 py-2 rounded">Buy Now</button>
-          <button className="bg-green-500 text-black px-4 py-2 rounded">Add to Cart</button>
-        </div>
-        <button className="mt-4 text-red-500" onClick={onClose}>Close</button>
-      </div>
-    );
-  };
-
-
-
-
-
-
-
-
-
-
-
-
+ 
   const handlePriceChange = (e) => {
     setSelectedPrice(e.target.value);
     onFilterChange({ size: selectedSize, price: e.target.value });
@@ -125,20 +94,18 @@ const Men = () => {
     { id: 6, name: "New Balance 990", price: 180, size: 10, category: "Running", img: "./assets/images/products/sports-6.jpg" },
     { id: 7, name: "Nike Air Force 1", price: 110, size: 11, category: "Sneakers", img: "./assets/images/products/sports-3.jpg" },
     { id: 8, name: "Adidas Stan Smith", price: 85, size: 8, category: "Casual", img: "./assets/images/products/sports-2.jpg" },
-   
   ]);
 
   const handleFilterChange = (filters) => {
     let filtered = [
       { id: 1, name: "Nike Air Max", price: 120, size: 9, category: "Sneakers", img: "./assets/images/products/sports-1.jpg" },
-      { id: 2, name: "Adidas Ultra Boost", price: 150, size: 10, category: "Running", img: "./assets/images/products/sports-2.jpg" },
-      { id: 3, name: "Puma Suede", price: 80, size: 8, category: "Casual", img: "./assets/images/products/sports-3.jpg" },
-      { id: 4, name: "Reebok Classic", price: 90, size: 7, category: "Casual", img: "./assets/images/products/sports-4.jpg" },
-      { id: 5, name: "Converse Chuck Taylor", price: 60, size: 9, category: "Sneakers", img: "./assets/images/products/sports-5.jpg" },
-      { id: 6, name: "New Balance 990", price: 180, size: 10, category: "Running", img: "./assets/images/products/sports-6.jpg" },
-      { id: 7, name: "Nike Air Force 1", price: 110, size: 11, category: "Sneakers", img: "./assets/images/products/sports-3.jpg" },
-      { id: 8, name: "Adidas Stan Smith", price: 85, size: 8, category: "Casual", img: "./assets/images/products/sports-2.jpg" },
-      
+    { id: 2, name: "Adidas Ultra Boost", price: 150, size: 10, category: "Running", img: "./assets/images/products/sports-2.jpg" },
+    { id: 3, name: "Puma Suede", price: 80, size: 8, category: "Casual", img: "./assets/images/products/sports-3.jpg" },
+    { id: 4, name: "Reebok Classic", price: 90, size: 7, category: "Casual", img: "./assets/images/products/sports-4.jpg" },
+    { id: 5, name: "Converse Chuck Taylor", price: 60, size: 9, category: "Sneakers", img: "./assets/images/products/sports-5.jpg" },
+    { id: 6, name: "New Balance 990", price: 180, size: 10, category: "Running", img: "./assets/images/products/sports-6.jpg" },
+    { id: 7, name: "Nike Air Force 1", price: 110, size: 11, category: "Sneakers", img: "./assets/images/products/sports-3.jpg" },
+    { id: 8, name: "Adidas Stan Smith", price: 85, size: 8, category: "Casual", img: "./assets/images/products/sports-2.jpg" },
     ];
 
     // Apply Size Filter
@@ -162,7 +129,7 @@ const Men = () => {
 
       {/* Shoes Grid */}
       <div className="flex-grow p-4">
-        <h2 className="text-3xl font-bold mb-4" class="heading-grid">Men's Shoes</h2>
+        <h2 className="text-3xl font-bold mb-4 " class="heading-grid">Women's Shoes</h2>
         <ShoeGrid shoes={filteredShoes} />
         <ShoeGrid shoes={filteredShoes} />
       </div>
