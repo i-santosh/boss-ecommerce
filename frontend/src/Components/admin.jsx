@@ -1,7 +1,7 @@
 import React from "react";
-import { Card, CardContent } from "../Components/Address/uicomponents.JSX";
-import { Button } from "../Components/Address/uicomponents.JSX";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../Components/Address/uicomponents.JSX";
+import { Card, CardContent } from "../Components/Address/uicomponents";
+import { Button } from "../Components/Address/uicomponents";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../Components/Address/uicomponents";
 import { Plus } from "lucide-react";
 
 const AdminPage = () => {
