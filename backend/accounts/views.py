@@ -228,13 +228,14 @@ class VerifyEmailView(CoreAPIView):
     def validate_token_and_get_email(self, token):
         try:
             confirm_email = ConfirmEmail.objects.select_related('user').get(token=token)
+            print(confirm_email)
 
             # Check for token expiration
             if confirm_email.is_expired():
                 confirm_email.delete()
                 raise CoreAPIException(
                     error_code=EC.AUTH_TOKEN_EXPIRED,
-                    message={"Email confirmation link has expired!"}
+                    message="Email confirmation link has expired!"
                 )
 
             # Return the email associated with this confirmation token
@@ -243,11 +244,12 @@ class VerifyEmailView(CoreAPIView):
         except ConfirmEmail.DoesNotExist:
             raise CoreAPIException(
                 error_code=EC.RES_NOT_FOUND,
-                message={"Invalid token or token is expired!"}
+                message="Invalid token or token is expired!"
             )
 
     def get(self, request, *args, **kwargs):
         token = request.query_params.get('token')
+        print(token)
 
         if not token:
             raise CoreAPIException(
@@ -292,7 +294,7 @@ class VerifyEmailView(CoreAPIView):
         except CUser.DoesNotExist:
             raise CoreAPIException(
                 error_code=EC.RES_NOT_FOUND,
-                message={"User doesn't exists!"}
+                message="User doesn't exists!"
             )
 
 

@@ -18,11 +18,13 @@ DEBUG = True
 ALLOWED_HOSTS = ["*"]
 
 CSRF_TRUSTED_ORIGINS = [
-    'http://localhost:3000',
+    'http://localhost:5173',
+    'https://3b8d-157-39-68-147.ngrok-free.app',
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000',
+    'http://localhost:5173',
+    'https://3b8d-157-39-68-147.ngrok-free.app',
 ]
 CORS_ALLOW_CREDENTIALS = True
 
@@ -56,6 +58,8 @@ INSTALLED_APPS = [
     'corsheaders',
 
     'accounts',
+    'products',
+    'orders',
 ]
 
 MIDDLEWARE = [
@@ -64,7 +68,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'middleware.jwt_cookie_auth.JWTAuthCookieMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
