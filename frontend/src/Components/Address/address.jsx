@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Card, CardContent,Button,Dialog, DialogContent, DialogTitle,Input } from "../ui-card/card,button.jsx";
+import { Card, CardContent, Button, Dialog, DialogContent, DialogTitle, Input } from "../ui-card/card-button";
 
 const ManageAddress = () => {
   const [addresses, setAddresses] = useState([
@@ -10,19 +10,20 @@ const ManageAddress = () => {
   const [newAddress, setNewAddress] = useState({ name: "", address: "" });
 
 
-// saving new address
+  // saving new address
   const handleAddAddress = () => {
-    if(!newAddress.name || !newAddress.address) {
+    if (!newAddress.name || !newAddress.address) {
 
-alert("Please fill in all fields")}
-else{
+      alert("Please fill in all fields")
+    }
+    else {
 
-  
-    setAddresses([...addresses, { id: Date.now(), ...newAddress, isDefault: false }]);
-    setShowModal(false);
-    setNewAddress({ name: "", address: "" });
-}
-    
+
+      setAddresses([...addresses, { id: Date.now(), ...newAddress, isDefault: false }]);
+      setShowModal(false);
+      setNewAddress({ name: "", address: "" });
+    }
+
   };
 
   const handleDelete = (id) => {
@@ -35,13 +36,13 @@ else{
 
 
 
-// save address hover effect
-const [hovered, setHovered] = useState(false);
-const hover = {
-  backgroundColor: hovered?"salmon":"white",
-  color:hovered?"white":"salmon",
+  // save address hover effect
+  const [hovered, setHovered] = useState(false);
+  const hover = {
+    backgroundColor: hovered ? "salmon" : "white",
+    color: hovered ? "white" : "salmon",
 
-}
+  }
 
 
   return (
@@ -88,12 +89,12 @@ const hover = {
               onChange={(e) => setNewAddress({ ...newAddress, address: e.target.value })}
               className="border-pink-500 mt-2"
             />
-            <Button className=" text-black  " 
-            
-            style={hover}
-            onMouseEnter={()=>setHovered(true)}
-            onMouseLeave={()=>setHovered(false)}
-            onClick={handleAddAddress}>
+            <Button className=" text-black  "
+
+              style={hover}
+              onMouseEnter={() => setHovered(true)}
+              onMouseLeave={() => setHovered(false)}
+              onClick={handleAddAddress}>
               Save Address
             </Button>
           </DialogContent>

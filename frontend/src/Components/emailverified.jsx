@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card,CardContent,Button } from './ui-card/card,button';
+import { Card,CardContent,Button } from './ui-card/card-button';
 import { Link } from 'react-router-dom';
 
 function Emailverified(props) {

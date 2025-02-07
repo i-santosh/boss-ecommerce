@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardContent, Button } from "../ui-card/card,button.jsx"
+import { Card, CardContent, Button } from "../ui-card/card-button"
 import { useNavigate } from 'react-router-dom';
 
 function Faq(props) {

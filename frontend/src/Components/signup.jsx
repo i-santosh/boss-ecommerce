@@ -46,7 +46,7 @@ const Signupform = () => {
         Cookies.set("access_token", access.value, { expires: access.max_age / 86400, secure: true, sameSite: "Strict" });
         Cookies.set("refresh_token", refresh.value, { expires: refresh.max_age / 86400, secure: true, sameSite: "Strict" });
 
-        setTimeout(() => navigate("/signupredirect"), 10);
+        setTimeout(() => navigate(`/email/verify/?email=${formData.email}`), 10);
       } else {
         setError(response.data.message[0]);
       }

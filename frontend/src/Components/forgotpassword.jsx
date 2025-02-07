@@ -1,8 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import "./ui-card/card,button.jsx"
-import { Button, Card } from './ui-card/card,button.jsx';
-// import { Card,CardContent,Button} from './ui-card/card,button.jsx';
+import { Button, Card } from './ui-card/card-button';
 
 export default function ForgotPassword() {
   const [email, setEmail] = useState('');
