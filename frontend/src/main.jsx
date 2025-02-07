@@ -29,7 +29,7 @@ import Address from './Components/Address/address.jsx';
 import ProfileInfo from './Components/Address/profile.jsx';
 import AdminPage from './Components/admin.jsx';
 import Error from './Components/error.jsx';
-import Signupredirect from './Components/signupredirectpage.jsx';
+import EmailVerificationSent from './Components/email-verification-sent.jsx'
 import Emailverified from './Components/emailverified.jsx';
 
 const router = createBrowserRouter(
@@ -65,8 +65,8 @@ const router = createBrowserRouter(
         <Route path='adminpage' element={<AdminPage />} />
         <Route path='*' element={<Error />} />
       </Route>
-      <Route path='email/confirm' element={<Signupredirect />} />
-      <Route path='email/verify' element={<Emailverified />} />
+      <Route path='email/confirm' element={<Emailverified />} />
+      <Route path='email/verify' element={<EmailVerificationSent />} />
     </>
   )
 );
