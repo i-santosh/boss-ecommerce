@@ -81,17 +81,4 @@ const AdminPage = () => {
 
 export default AdminPage;
 
-// Tailwind CSS additions in your styles
-// .bg-salmon-pink-50 { background-color: #FFF5F5; }
-// .bg-salmon-pink-100 { background-color: #FFE3E3; }
-// .bg-salmon-pink-600 { background-color: #FF6F61; }
-// .bg-salmon-pink-700 { background-color: #E55A4F; }
-// .text-salmon-pink-700 { color: #E55A4F; }
-// .text-salmon-pink-800 { color: #C7463A; }
-
-
-
-
-
-
 
