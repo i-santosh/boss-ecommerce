@@ -1,21 +1,25 @@
+from django.utils import timezone
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .models import Product, Category
-from .serializers import ProductSerializer, CategorySerializer
+from .models import Product, Category, DealOfTheDay
+from .serializers import ProductSerializer, CategorySerializer, DealOfTheDaySerializer
+from utils.response import generate_api_response
+from core.success_codes import SuccessCodes as SC
+
 
 class ProductList(APIView):
     def get(self, request):
         products = Product.objects.all()
         serializer = ProductSerializer(products, many=True)
-        return Response(serializer.data)
+        return generate_api_response(
+            success=True,
+            message="",
+            data=serializer.data,
+            code=SC.REQ_DATA_RETRIEVED.value,
+            status_code=status.HTTP_200_OK
+        )
 
-    def post(self, request):
-        serializer = ProductSerializer(data=request.data)
-        if serializer.is_valid():
-            product = serializer.save()
-            return Response(ProductSerializer(product).data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class ProductDetail(APIView):
     def get_object(self, pk):
@@ -29,34 +33,19 @@ class ProductDetail(APIView):
         serializer = ProductSerializer(product)
         return Response(serializer.data)
 
-    def put(self, request, pk):
-        product = self.get_object(pk)
-        serializer = ProductSerializer(product, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    def delete(self, request, pk):
-        product = self.get_object(pk)
-        product.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
-
-
-
 
 class CategoryList(APIView):
     def get(self, request):
         categories = Category.objects.all()
         serializer = CategorySerializer(categories, many=True)
-        return Response(serializer.data)
+        return generate_api_response(
+            success=True,
+            message="",
+            data=serializer.data,
+            code=SC.REQ_DATA_RETRIEVED.value,
+            status_code=status.HTTP_200_OK
+        )
 
-    def post(self, request):
-        serializer = CategorySerializer(data=request.data)
-        if serializer.is_valid():
-            category = serializer.save()
-            return Response(CategorySerializer(category).data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class CategoryDetail(APIView):
     def get_object(self, pk):
@@ -70,15 +59,21 @@ class CategoryDetail(APIView):
         serializer = CategorySerializer(category)
         return Response(serializer.data)
 
-    def put(self, request, pk):
-        category = self.get_object(pk)
-        serializer = CategorySerializer(category, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def delete(self, request, pk):
-        category = self.get_object(pk)
-        category.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class DealOfTheDayView(APIView):
+    def get(self, request):
+        deals = DealOfTheDay.objects.filter(
+            is_active=True,
+            start_date__lte=timezone.now(),
+            end_date__gte=timezone.now()
+        )
+        serializer = DealOfTheDaySerializer(deals, many=True)
+        return generate_api_response(
+            success=True,
+            message="Active deals retrieved successfully",
+            data=serializer.data,
+            code=SC.REQ_DATA_RETRIEVED.value,
+            status_code=status.HTTP_200_OK
+        )

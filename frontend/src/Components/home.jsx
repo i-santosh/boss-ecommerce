@@ -1,15 +1,15 @@
 import React from 'react';
 
-import Banner from './banner'
-import HorizontalCategories from './categories'
-import Sidebarcategories from './sidebar-categories'
-import ProductMinimal from './product-minimal'
-import ProductFeatured from './product-featured'
-import NewProductsGrid from './new-product-grid'
-import Testimonials from './testimonials'
-import CTA from './cta'
-import Services from './services'
-import Blogs from './blogs'
+import Banner from './banner';
+import Blogs from './blogs';
+import HorizontalCategories from './categories';
+import CTA from './cta';
+import NewProductsGrid from './new-product-grid';
+import ProductFeatured from './product-featured';
+import ProductMinimal from './product-minimal';
+import Services from './services';
+import Sidebarcategories from './sidebar-categories';
+import Testimonials from './testimonials';
 
 const Home = () => {
   return (

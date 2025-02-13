@@ -8,8 +8,9 @@ app_name = 'products'
 urlpatterns = [
     # Product URLs
     path('products/', include([
-        path('', views.ProductList.as_view(), name='product-list'),
+        path('deal-of-the-day/', views.DealOfTheDayView.as_view(), name='deal-of-the-day'),
         path('<int:pk>/', views.ProductDetail.as_view(), name='product-detail'),
+        path('', views.ProductList.as_view(), name='product-list'),
     ])),
     
     # Category URLs

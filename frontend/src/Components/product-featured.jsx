@@ -1,130 +1,119 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+const BACKEND_API_ROOT_URL = import.meta.env.VITE_BACKEND_API_ROOT_URL;
+const BACKEND_ROOT_URL = import.meta.env.VITE_BACKEND_ROOT_URL;
 
-export default function ProductFeatured() {
+const ProductFeatured = () => {
+    const [deals, setDeals] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [timeLeft, setTimeLeft] = useState({});
+
+    useEffect(() => {
+        const fetchDeals = async () => {
+            try {
+                const response = await fetch(`${BACKEND_API_ROOT_URL}/products/products/deal-of-the-day/`);
+                const result = await response.json();
+                if (result.success) {
+                    setDeals(result.data);
+                    const initialTimeLeft = result.data.reduce((acc, deal) => {
+                        acc[deal.id] = calculateTimeLeft(deal.end_date);
+                        return acc;
+                    }, {});
+                    setTimeLeft(initialTimeLeft);
+                }
+            } catch (error) {
+                console.error('Error fetching deals:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchDeals();
+    }, []);
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setTimeLeft((prevTimeLeft) => {
+                return Object.keys(prevTimeLeft).reduce((acc, dealId) => {
+                    acc[dealId] = calculateTimeLeft(deals.find(d => d.id === parseInt(dealId))?.end_date);
+                    return acc;
+                }, {});
+            });
+        }, 1000);
+
+        return () => clearInterval(timer);
+    }, [deals]);
+
+    const calculateTimeLeft = (endDate) => {
+        const difference = new Date(endDate) - new Date();
+        if (difference <= 0) {
+            return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+        }
+        return {
+            days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+            hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+            minutes: Math.floor((difference / 1000 / 60) % 60),
+            seconds: Math.floor((difference / 1000) % 60),
+        };
+    };
+
+    if (loading) {
+        return <div className="text-center p-4">Loading deals...</div>;
+    }
+
     return (
         <>
-            <h2 class="title">Deal of the day</h2>
-            <div class="showcase-wrapper has-scrollbar">
-                <div class="showcase-container">
-                    <div class="showcase">
-                        <div class="showcase-banner">
-                            <img src="./assets/images/products/shampoo.jpg" alt="shampoo, conditioner & facewash packs" class="showcase-img" />
-                        </div>
-                        <div class="showcase-content">
-                            <div class="showcase-rating">
-                                <ion-icon name="star"></ion-icon>
-                                <ion-icon name="star"></ion-icon>
-                                <ion-icon name="star"></ion-icon>
-                                <ion-icon name="star-outline"></ion-icon>
-                                <ion-icon name="star-outline"></ion-icon>
+            <h2 className="title">Deal of the day</h2>
+            <div className="showcase-wrapper has-scrollbar">
+                {deals.map((deal) => (
+                    <div key={deal.id} className="showcase-container">
+                        <div className="showcase">
+                            <div className="showcase-banner">
+                                <img 
+                                    src={BACKEND_ROOT_URL+deal.product.thumbnail} 
+                                    alt={deal.product.name} 
+                                    className="showcase-img"
+                                />
                             </div>
-                            <a href="#">
-                                <h3 class="showcase-title">shampoo, conditioner & facewash packs</h3>
-                            </a>
-                            <p class="showcase-desc">
-                                Lorem ipsum dolor sit amet consectetur Lorem ipsum
-                                dolor dolor sit amet consectetur Lorem ipsum dolor
-                            </p>
-                            <div class="price-box">
-                                <p class="price">&#8377;150.00</p>
-                                <del>&#8377;200.00</del>
-                            </div>
-                            <button class="add-cart-btn">add to cart</button>
-                            <div class="showcase-status">
-                                <div class="wrapper">
-                                    <p>
-                                        already sold: <b>20</b>
-                                    </p>
-                                    <p>
-                                        available: <b>40</b>
-                                    </p>
+                            <div className="showcase-content">
+                                <div className="showcase-rating">
+                                    {[...Array(5)].map((_, index) => (
+                                        <span key={index} className="text-yellow-400">★</span>
+                                    ))}
                                 </div>
-                                <div class="showcase-status-bar"></div>
-                            </div>
-                            <div class="countdown-box">
-                                <p class="countdown-desc">
-                                    Hurry Up! Offer ends in:
+                                <h3 className="showcase-title">
+                                    <a href="#" className="showcase-title">{deal.product.name}</a>
+                                </h3>
+                                <p className="showcase-desc">
+                                    Special deal of the day - Limited time offer!
                                 </p>
-                                <div class="countdown">
-                                    <div class="countdown-content">
-                                        <p class="display-number">360</p>
-                                        <p class="display-text">Days</p>
-                                    </div>
-                                    <div class="countdown-content">
-                                        <p class="display-number">24</p>
-                                        <p class="display-text">Hours</p>
-                                    </div>
-                                    <div class="countdown-content">
-                                        <p class="display-number">59</p>
-                                        <p class="display-text">Min</p>
-                                    </div>
-                                    <div class="countdown-content">
-                                        <p class="display-number">00</p>
-                                        <p class="display-text">Sec</p>
+                                <div className="price-box">
+                                    <p className="price">₹{deal.deal_price}</p>
+                                    <del>₹{deal.product.price}</del>
+                                </div>
+                                <button className="add-cart-btn">Add to cart</button>
+                                <div className="countdown-box">
+                                    <p className="countdown-desc">
+                                        Hurry Up! Offer ends in:
+                                    </p>
+                                    <div className="countdown">
+                                        {Object.entries(timeLeft[deal.id] || {}).map(([unit, value]) => (
+                                            <div key={unit} className="countdown-content">
+                                                <p className="display-number">
+                                                    {String(value).padStart(2, '0')}
+                                                </p>
+                                                <p className="display-text">
+                                                    {unit.charAt(0).toUpperCase() + unit.slice(1)}
+                                                </p>
+                                            </div>
+                                        ))}
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="showcase-container">
-                    <div class="showcase">
-                        <div class="showcase-banner">
-                            <img src="./assets/images/products/jewellery-1.jpg" alt="Rose Gold diamonds Earring" class="showcase-img" />
-                        </div>
-                        <div class="showcase-content">
-                            <div class="showcase-rating">
-                                <ion-icon name="star"></ion-icon>
-                                <ion-icon name="star"></ion-icon>
-                                <ion-icon name="star"></ion-icon>
-                                <ion-icon name="star-outline"></ion-icon>
-                                <ion-icon name="star-outline"></ion-icon>
-                            </div>
-                            <h3 class="showcase-title">
-                                <a href="#" class="showcase-title">Rose Gold diamonds Earring</a>
-                            </h3>
-                            <p class="showcase-desc">
-                                Lorem ipsum dolor sit amet consectetur Lorem ipsum
-                                dolor dolor sit amet consectetur Lorem ipsum dolor
-                            </p>
-                            <div class="price-box">
-                                <p class="price">&#8377;1990.00</p>
-                                <del>&#8377;2000.00</del>
-                            </div>
-                            <button class="add-cart-btn">add to cart</button>
-                            <div class="showcase-status">
-                                <div class="wrapper">
-                                    <p> already sold: <b>15</b> </p>
-                                    <p> available: <b>40</b> </p>
-                                </div>
-                                <div class="showcase-status-bar"></div>
-                            </div>
-                            <div class="countdown-box">
-                                <p class="countdown-desc">Hurry Up! Offer ends in:</p>
-                                <div class="countdown">
-                                    <div class="countdown-content">
-                                        <p class="display-number">360</p>
-                                        <p class="display-text">Days</p>
-                                    </div>
-                                    <div class="countdown-content">
-                                        <p class="display-number">24</p>
-                                        <p class="display-text">Hours</p>
-                                    </div>
-                                    <div class="countdown-content">
-                                        <p class="display-number">59</p>
-                                        <p class="display-text">Min</p>
-                                    </div>
-                                    <div class="countdown-content">
-                                        <p class="display-number">00</p>
-                                        <p class="display-text">Sec</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                ))}
             </div>
         </>
-    )
-}
+    );
+};
+
+export default ProductFeatured;
