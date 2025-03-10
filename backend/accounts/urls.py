@@ -30,7 +30,7 @@ urlpatterns = [
 
         path('reset/', include([
             path('verify-token/', views.VerifyTokenView.as_view(), 
-                name='password-reset'),
+                name='password-reset-token-verify'),
             path('', views.ResetPasswordView.as_view(), 
                 name='password-reset'),
             path('request/', views.RequestPasswordResetView.as_view(), 

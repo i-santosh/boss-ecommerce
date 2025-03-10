@@ -12,7 +12,7 @@ class CoreAPIException(APIException):
                  extra_context: Optional[Dict[str, Any]] = None):
         
         self.error_details = ErrorHandler.get_error_details(error_code)
-        self.message = {message or self.error_details['message']}
+        self.message = message or self.error_details['message']
         self.error_code = error_code.value
         # Properly call parent class constructor with both detail and code
         super().__init__(detail=self.message, code=self.error_code)
@@ -23,8 +23,7 @@ class CoreAPIException(APIException):
         }
 
     def get_full_details(self):
-        # Return a full response with error details, 
-        # including potential causes and actions
+        print(self.message)
         return generate_api_response(
             success=False,
             message=self.message,

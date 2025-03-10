@@ -1,3 +1,4 @@
+import jwt
 from django.db import IntegrityError
 from django.contrib.auth import authenticate
 from django.shortcuts import get_object_or_404
@@ -13,12 +14,16 @@ from core.error_codes import ErrorCodes as EC
 from utils.response import generate_api_response
 from core.success_codes import SuccessCodes as SC
 from core.custom_exceptions import CoreAPIException
-from .models import CUser, PasswordReset, ConfirmEmail
+from .models import CUser, PasswordReset
 from utils.calculate_jwt_age import calculate_jwt_expiry
 from .serializers import (
     ChangePasswordSerializer, RequestPasswordResetSerializer,
     ResetPasswordSerializer, SignUpSerializer, SignInSerializer,
-    UserProfileSerializer, SendVerificationEmailSerializer)
+    UserProfileSerializer)
+from notifications.tasks import (send_email_confirmed_notification_task,
+                                 send_confirm_email_notification_task,
+                                 send_password_reset_email_task)
+from .utils import verify_email_token, generate_email_verification_token
 from core.throttles import SustainedRateThrottle, AuthRateThrottle
 
 
@@ -101,18 +106,6 @@ class SignUpView(CoreAPIView):
                 }
             },
                 status_code=status.HTTP_200_OK,
-                cookies={
-                    ACCESS_TOKEN_NAME: {
-                        'value': access_token_str,
-                        'max_age': access_token_max_age,
-                        'expires': access_token_expires,
-                    },
-                    REFRESH_TOKEN_NAME: {
-                        'value': refresh_token_str,
-                        'max_age': refresh_token_max_age,
-                        'expires': refresh_token_expires,
-                    }
-                },
                 extra_context={"action": "Redirecting.."}
             )
 
@@ -180,18 +173,6 @@ class SignInView(CoreAPIView):
                 }
             },
             status_code=status.HTTP_200_OK,
-            cookies={
-                ACCESS_TOKEN_NAME: {
-                    'value': access_token_str,
-                    'max_age': access_token_max_age,
-                    'expires': access_token_expires,
-                },
-                REFRESH_TOKEN_NAME: {
-                    'value': refresh_token_str,
-                    'max_age': refresh_token_max_age,
-                    'expires': refresh_token_expires,
-                }
-            },
             extra_context={"action": "Redirecting.."}
         )
 
@@ -201,16 +182,29 @@ class SendEmailVerificationLinkView(CoreAPIView):
     throttle_classes = [AuthRateThrottle]
 
     def post(self, request, *args, **kwargs):
-        data = request.data.copy()
+        user = request.user
+        # Get the email from request data, fallback to user's current email
+        email = request.data.get('email', request.user.email)
 
-        token_generator = PasswordResetTokenGenerator()
-        token = token_generator.make_token(request.user)
-        data["token"] = token
-        data["user"] = request.user.pk
-        serializer = SendVerificationEmailSerializer(data=data)
+        # Check if email is already verified
+        if user.email_verified:
+            raise CoreAPIException(
+                error_code=EC.PERM_ACTION_FORBIDDEN,
+                message="Your email has already been verified!"
+            )
+        
+        # Generate new JWT token for email verification
+        email_verification_token = generate_email_verification_token(
+            user=request.user,
+            custom_email=email,
+            expiry_hours=2
+        )
 
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
+        # Create confirmation link
+        confirmation_link = f"{PROJECT_WEBSITE_NAME_HTTPS}/email/confirm/{email_verification_token}"
+
+        # Send confirmation email
+        send_confirm_email_notification_task(user.email, confirmation_link)
 
         return generate_api_response(
             success=True,
@@ -225,31 +219,9 @@ class VerifyEmailView(CoreAPIView):
     permission_classes = [permissions.AllowAny]
     throttle_classes = [AuthRateThrottle]
 
-    def validate_token_and_get_email(self, token):
-        try:
-            confirm_email = ConfirmEmail.objects.select_related('user').get(token=token)
-            print(confirm_email)
-
-            # Check for token expiration
-            if confirm_email.is_expired():
-                confirm_email.delete()
-                raise CoreAPIException(
-                    error_code=EC.AUTH_TOKEN_EXPIRED,
-                    message="Email confirmation link has expired!"
-                )
-
-            # Return the email associated with this confirmation token
-            return confirm_email
-
-        except ConfirmEmail.DoesNotExist:
-            raise CoreAPIException(
-                error_code=EC.RES_NOT_FOUND,
-                message="Invalid token or token is expired!"
-            )
 
     def get(self, request, *args, **kwargs):
         token = request.query_params.get('token')
-        print(token)
 
         if not token:
             raise CoreAPIException(
@@ -257,31 +229,39 @@ class VerifyEmailView(CoreAPIView):
                 message="Token is required"
             )
 
+
         try:
-            confirm_email_instance = self.validate_token_and_get_email(
-                token=token
-            )
-            email = confirm_email_instance.email
-            user = confirm_email_instance.user
+            # Decode and verify the token
+            payload = verify_email_token(token)
+
+            # Extract user information from payload
+            user_id = payload.get('user_id')
+            email_to_verify = payload.get('email')
+
+            # Get the user
+            try:
+                user = CUser.objects.get(uid=user_id)
+            except CUser.DoesNotExist:
+                raise CoreAPIException(
+                    error_code=EC.RES_NOT_FOUND,
+                    message="We couldn't find an account with this user!"
+                )
 
             if user.email_verified:
                 raise CoreAPIException(
                     error_code=EC.PERM_ACTION_FORBIDDEN,
                     message="Your account has been already verified!"
                 )
-
-            # Find and activate the user
-            user.email = email
+            
+             # Find and activate the user
+            user.email = email_to_verify
             user.email_verified = True
             user.save()
 
-            # send_email_confirmed_notification_task.delay(
-            #     name=user.name,
-            #     user_email=user.email
-            # )
-
-            # Delete the confirmation token after successful email verification
-            confirm_email_instance.delete()
+            send_email_confirmed_notification_task(
+                name=user.full_name,
+                user_email=user.email
+            )
 
             return generate_api_response(
                 success=True,
@@ -294,7 +274,13 @@ class VerifyEmailView(CoreAPIView):
         except CUser.DoesNotExist:
             raise CoreAPIException(
                 error_code=EC.RES_NOT_FOUND,
-                message="User doesn't exists!"
+                message="We couldn't find an account with this user!"
+            )
+        
+        except (jwt.ExpiredSignatureError, jwt.InvalidTokenError) as e:
+            raise CoreAPIException(
+                error_code=EC.AUTH_TOKEN_EXPIRED if isinstance(e, jwt.ExpiredSignatureError) else EC.RES_NOT_FOUND,
+                message="Email confirmation link has expired! Try sending one again." if isinstance(e, jwt.ExpiredSignatureError) else "Invalid confirmation link! Try sending one again."
             )
 
 
@@ -324,7 +310,7 @@ class RequestPasswordResetView(CoreAPIView):
         reset.save()
 
         reset_url = f"{PROJECT_WEBSITE_NAME_HTTPS}/accounts/password-reset/{token}"
-        # send_password_reset_email_email_task.delay(email, reset_url)
+        send_password_reset_email_task(email, reset_url)
 
         return generate_api_response(
             success=True,

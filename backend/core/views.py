@@ -212,7 +212,7 @@ class CoreAPIView(APIView, LoggingMixin):
         error_details = EH.get_error_details(err_code)
 
         # Check if the exception has a custom message and use it, otherwise fall back to default message
-        message = {error_details['message']}
+        message = error_details['message']
 
         return generate_api_response(
             success=False,

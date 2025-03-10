@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import CUser, PasswordReset, ConfirmEmail
+from .models import CUser, PasswordReset
 
 admin.site.site_header = "BOSS ECOM Admin Panel"       # Header text
 admin.site.site_title = "BOSS ECOM Admin"             # Browser tab title
@@ -13,7 +13,4 @@ class CUserAdmin(admin.ModelAdmin):
 @admin.register(PasswordReset)
 class PasswordResetAdmin(admin.ModelAdmin):
     list_display = ["email", "token", "created_at", "expires_at"]
-
-
-admin.site.register(ConfirmEmail)
 

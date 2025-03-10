@@ -19,12 +19,12 @@ ALLOWED_HOSTS = ["*"]
 
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost:5173',
-    'https://3b8d-157-39-68-147.ngrok-free.app',
+    'https://4c0d-2409-4055-210-968d-989d-39cc-2c8a-d4fa.ngrok-free.app',
 ]
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',
-    'https://3b8d-157-39-68-147.ngrok-free.app',
+    'https://4c0d-2409-4055-210-968d-989d-39cc-2c8a-d4fa.ngrok-free.app',
 ]
 CORS_ALLOW_CREDENTIALS = True
 
@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'corsheaders',
 
+    'notifications',
     'accounts',
     'products',
     'orders',
@@ -67,7 +68,6 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'middleware.jwt_cookie_auth.JWTAuthCookieMiddleware',
     # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -118,7 +118,7 @@ ROOT_URLCONF = 'boss_ecommerce.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -186,6 +186,27 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
+# Celery Configuration
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'UTC'
+
+
+# Email Configuration
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.getenv('from_email')
+EMAIL_HOST_PASSWORD = os.getenv('google_mail_app_password')
+DEFAULT_FROM_EMAIL = os.getenv('from_email')
+
+RAZORPAY_KEY_ID = os.getenv('RAZORPAY_KEY_ID')
+RAZORPAY_KEY_SECRET = os.getenv('RAZORPAY_KEY_SECRET')
 
 LOGGING = {
     'version': 1,

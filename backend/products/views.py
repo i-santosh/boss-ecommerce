@@ -31,7 +31,13 @@ class ProductDetail(APIView):
     def get(self, request, pk):
         product = self.get_object(pk)
         serializer = ProductSerializer(product)
-        return Response(serializer.data)
+        return generate_api_response(
+            success=True,
+            message="",
+            data=serializer.data,
+            code=SC.REQ_DATA_RETRIEVED.value,
+            status_code=status.HTTP_200_OK
+        )
 
 
 class CategoryList(APIView):

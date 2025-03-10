@@ -11,6 +11,7 @@ urlpatterns = [
     path(API_V1, include([
         path('accounts/', include('accounts.urls')),
         path('products/', include('products.urls')),
+        path('orders/', include('orders.urls')),
 
         # # Razorpay Webhook Handler
         # path('razorpay/webhooks/', razorpay_webhook, name='razorpay-webhook'),

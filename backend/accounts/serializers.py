@@ -1,15 +1,15 @@
 from rest_framework import serializers
 from django.contrib.auth.password_validation import validate_password
-from django.contrib.auth.tokens import PasswordResetTokenGenerator
 
-from core.custom_exceptions import CoreAPIException
-from core.error_codes import ErrorCodes as EC
-from .models import CUser, PasswordReset, ConfirmEmail
+from constants import *
+from .models import CUser, PasswordReset
+from .utils import generate_email_verification_token
+from notifications.tasks import (send_confirm_email_notification_task)
 
 class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = CUser
-        fields = ["full_name", "email", "email_verified"]
+        fields = ["full_name", "email", "email_verified", "contact_number", "country"]
         read_only_fields = ['email_verified']
 
     def validate_username(self, value):
@@ -39,12 +39,13 @@ class SignUpSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         user = CUser.objects.create_user(**validated_data)
-        token_generator = PasswordResetTokenGenerator()
-        token = token_generator.make_token(user)
+        # Generate JWT token for email verification
+        email_verification_token = generate_email_verification_token(user)
 
-        ConfirmEmail.objects.create(user=user,
-                                    email=user.email,
-                                    token=token)
+        # Send confirmation email with the JWT token
+        confirmation_link = f"{PROJECT_WEBSITE_NAME_HTTPS}/email/confirm/{email_verification_token}"
+        send_confirm_email_notification_task(user.email, confirmation_link)
+
         return user
 
 
@@ -115,20 +116,4 @@ class ResetPasswordSerializer(serializers.Serializer):
         # Delete the password reset record to prevent reuse
         password_reset.delete()
         return user
-
-
-class SendVerificationEmailSerializer(serializers.ModelSerializer):  
-    class Meta:
-        model = ConfirmEmail
-        fields = ["user", "email", "token"]
-
-    def validate_email(self, email):
-        email_exists = CUser.objects.filter(email=email,
-                                            email_verified=True).exists()
-        if email_exists:
-            raise CoreAPIException(
-                    error_code=EC.RES_ALREADY_EXISTS.value,
-                    message="Account with this email already exists!"
-            )
-        return email
 
