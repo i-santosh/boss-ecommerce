@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "../css/uservalidation.css";
 import "../css/signup.css";
+import apiClient from "../../lib/client-axios";
 
 const Signupform = () => {
   const navigate = useNavigate();
@@ -35,7 +36,7 @@ const Signupform = () => {
     setSuccessMessage("");
 
     try {
-      const response = await axios.post("http://127.0.0.1:8000/api/v1/accounts/signup/", formData);
+      const response = await apiClient.post("/accounts/signup/", formData);
 
       if (response.data.success) {
         setSuccessMessage(response.data.message[0]);

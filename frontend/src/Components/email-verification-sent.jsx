@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import apiClient from '../../lib/client-axios';
 import { Card, CardContent, Button } from './ui-card/card-button';
+import { toast } from "react-fox-toast"
+
 
 export default function EmailVerificationSent() {
     const [email, setEmail] = useState('');
@@ -25,10 +27,23 @@ export default function EmailVerificationSent() {
         setEmailError(false); // Clear error when user starts editing
     };
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         // Add your email validation logic here
         if (!validateEmail(email)) {
             setEmailError(true);
+        }
+
+        try {
+            const response = (await apiClient.post('/accounts/email/send/', { email })).data;
+
+            console.log(response);
+            if (await response.success) {
+                toast.success(await response.message)
+            } else {
+                toast.error(await response.message)
+            }
+        } catch (error) {
+            toast.error('An error occurred. Please try again later.')
         }
     };
 
@@ -94,24 +109,22 @@ export default function EmailVerificationSent() {
                     </div>
                 </CardContent>
                 <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
-                    <Link to="/email/verify/">
-                        <Button
-                            className="button-verified"
-                            style={{
-                                backgroundColor: '#f87171',
-                                color: '#fff',
-                                fontSize: '16px',
-                                padding: '10px 20px',
-                                borderRadius: '8px',
-                                cursor: 'pointer',
-                                border: 'none',
-                                transition: 'background-color 0.3s ease',
-                            }}
-                            onClick={handleSubmit}
-                        >
-                            Resend link
-                        </Button>
-                    </Link>
+                    <Button
+                        className="button-verified"
+                        style={{
+                            backgroundColor: '#f87171',
+                            color: '#fff',
+                            fontSize: '16px',
+                            padding: '10px 20px',
+                            borderRadius: '8px',
+                            cursor: 'pointer',
+                            border: 'none',
+                            transition: 'background-color 0.3s ease',
+                        }}
+                        onClick={handleSubmit}
+                    >
+                        Resend link
+                    </Button>
                 </div>
             </Card>
         </div>

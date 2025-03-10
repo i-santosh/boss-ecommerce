@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from "react";
+import apiClient from "../../lib/client-axios";
+import { Link } from "react-router-dom";
 
 const BACKEND_API_ROOT_URL = import.meta.env.VITE_BACKEND_API_ROOT_URL;
 const BACKEND_ROOT_URL = import.meta.env.VITE_BACKEND_ROOT_URL;
 
-
 export default function NewProductsGrid() {
+    const [loading, setLoading] = useState(false);
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await fetch(`${BACKEND_API_ROOT_URL}/products/products/`);
-                const result = await response.json();
-                if (result.success) {
-                    setProducts(result.data);
+                const response = (await apiClient.get('/products/products/')).data;
+                if (await response.success) {
+                    console.log(response.data);
+                    setProducts(await response.data);
                 }
             } catch (error) {
                 console.error('Error fetching products:', error);
@@ -29,9 +31,10 @@ export default function NewProductsGrid() {
             <h2 className="title">What's New</h2>
             <div className="product-grid">
                 {products.map(product => (
-                    <div className="showcase" key={product.id}>
-                        <div className="showcase-banner">
-                            <img src={BACKEND_ROOT_URL+product.thumbnail} alt={product.name} width="300" className="product-img default" />
+                    <Link to={`/products/${product.id}`} key={product.id}>
+                        <div className="showcase">
+                            <div className="showcase-banner">
+                                <img src={BACKEND_ROOT_URL+product.thumbnail} alt={product.name} width="300" className="product-img default" />
                             {product.images.length > 0 && (
                                 <img src={BACKEND_ROOT_URL+product.images[0].image} alt={product.name} width="300" className="product-img hover" />
                             )}
@@ -64,9 +67,10 @@ export default function NewProductsGrid() {
                             </div>
                             <div className="price-box">
                                 <p className="price">&#8377;{product.price}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </Link>
                 ))}
             </div>
         </>

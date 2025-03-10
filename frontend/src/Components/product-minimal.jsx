@@ -40,10 +40,10 @@ const ProductMinimal = () => {
 
   const renderShowcase = (product) => {
     if (!product) return null;
-   
+
     return (
       <div key={product.id} className="showcase">
-        <a href="#" className="showcase-img-box">
+        <a href={`/products/${product.id}`} className="showcase-img-box">
           <img
             src={BACKEND_ROOT_URL+product.thumbnail}
             alt={product.name}
@@ -52,7 +52,7 @@ const ProductMinimal = () => {
           />
         </a>
         <div className="showcase-content">
-          <a href="#">
+          <a href={`/products/${product.id}`}>
             <h4 className="showcase-title">{product.name}</h4>
           </a>
           <a href="#" className="showcase-category">

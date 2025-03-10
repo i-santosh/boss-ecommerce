@@ -3,7 +3,6 @@ import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
 import LAYOUT from './Components/LAYOUT.jsx';
 import Women from './Components/women.jsx';
-import Admin from './Components/admin.jsx';
 import About from './Components/about.jsx';
 import Cart from './Components/cart.jsx';
 import Home from './Components/home.jsx';
@@ -27,10 +26,12 @@ import MyOrders from './Components/Address/myorders.jsx';
 import Savedupi from './Components/Address/savedupi.jsx';
 import Address from './Components/Address/address.jsx';
 import ProfileInfo from './Components/Address/profile.jsx';
-import AdminPage from './Components/admin.jsx';
 import Error from './Components/error.jsx';
 import EmailVerificationSent from './Components/email-verification-sent.jsx'
 import Emailverified from './Components/emailverified.jsx';
+import { ToastContainer } from "react-fox-toast"
+import ProductDetail from './Components/product-detail.jsx';
+import NewPassword from './Components/new-password.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -46,7 +47,9 @@ const router = createBrowserRouter(
           <Route path='savedupi' element={<Savedupi />} />
           <Route path='address' element={<Address />} />
         </Route>
-        <Route path='admin' element={<Admin />} />
+        <Route path='accounts'>
+          <Route path='password-reset' element={<NewPassword />} />
+        </Route>
         <Route path='cart' element={<Cart />} />
         <Route path='contact' element={<Contact />} />
         <Route path='wish' element={<Wishlist />} />
@@ -62,11 +65,11 @@ const router = createBrowserRouter(
         <Route path='forgotpassword' element={<Forgotpassword />} />
         <Route path='terms' element={<Terms />} />
         <Route path='privacy&policy' element={<PrivacyPolicy />} />
-        <Route path='adminpage' element={<AdminPage />} />
         <Route path='*' element={<Error />} />
+        <Route path='email/confirm' element={<Emailverified />} />
+        <Route path='email/verify' element={<EmailVerificationSent />} />
+        <Route path="products/:id/" element={<ProductDetail />} />
       </Route>
-      <Route path='email/confirm' element={<Emailverified />} />
-      <Route path='email/verify' element={<EmailVerificationSent />} />
     </>
   )
 );
@@ -74,5 +77,6 @@ const router = createBrowserRouter(
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <RouterProvider router={router} />
+    <ToastContainer /> 
   </StrictMode>
 );
